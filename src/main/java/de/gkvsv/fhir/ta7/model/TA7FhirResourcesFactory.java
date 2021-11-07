@@ -48,29 +48,29 @@ public class TA7FhirResourcesFactory {
 
     public Invoice createRechnung(InvoiceStatus status, boolean isIrrlaeufer, String rezeptId, String belegNummer) {
         String rechnungId = UUID.randomUUID().toString();
-        Invoice rechung = new Invoice();
-        rechung.getMeta().getProfile().add(new CanonicalType("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten|1.0.4"));
-        rechung.setId(rechnungId);
-        rechung.setStatus(status);
+        Invoice rechnung = new Invoice();
+        rechnung.getMeta().getProfile().add(new CanonicalType("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten|1.0.4"));
+        rechnung.setId(rechnungId);
+        rechnung.setStatus(status);
 
         // irrlaeufer
         Extension irrlaeufer = new Extension();
         irrlaeufer.setUrl("https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Irrlaeufer");
         irrlaeufer.setValue(new BooleanType(isIrrlaeufer));
-        rechung.addExtension(irrlaeufer);
+        rechnung.addExtension(irrlaeufer);
 
         // Prescription id
         Identifier presicriptionID = new Identifier();
         presicriptionID.setSystem("https://gematik.de/fhir/NamingSystem/PrescriptionID");
         presicriptionID.setValue(rezeptId);
-        rechung.addIdentifier(presicriptionID);
+        rechnung.addIdentifier(presicriptionID);
 
         // Belegnummer
         Identifier belegnummer = new Identifier();
         belegnummer.setSystem("https://fhir.gkvsv.de/NamingSystem/GKVSV_NS_Belegnummer");
         belegnummer.setValue(belegNummer);
-        rechung.addIdentifier(belegnummer);
+        rechnung.addIdentifier(belegnummer);
 
-        return rechung;
+        return rechnung;
     }
 }
