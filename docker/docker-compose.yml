@@ -1,0 +1,6 @@
+version: "3.8"
+services:
+  hapi-server:
+    image: hapiproject/hapi
+    ports:
+      - "8080:8080"
