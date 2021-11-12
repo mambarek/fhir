@@ -19,10 +19,10 @@ public class ImportKennzeichenEnum {
         UNTER_GESTZL_PREIS_ABSTAND(2),
         KEIN_BEZUGS_ARZNEI_MITTEL(3);
 
-        private int value;
+        private int code;
 
-        ImportKennzeichen(int value) {
-            this.value = value;
+        ImportKennzeichen(int code) {
+            this.code = code;
         }
 
         public static ImportKennzeichen fromCode(String codeString) {
@@ -45,18 +45,7 @@ public class ImportKennzeichenEnum {
         }
 
         public String toCode() {
-            switch (this) {
-                case KEIN_IMPORT:
-                    return "0";
-                case MIT_GESTZL_PREISABSTAND:
-                    return "1";
-                case UNTER_GESTZL_PREIS_ABSTAND:
-                    return "2";
-                case KEIN_BEZUGS_ARZNEI_MITTEL:
-                    return "3";
-                default:
-                    return "?";
-            }
+            return String.valueOf(this.code);
         }
 
         public String getSystem() {
@@ -113,19 +102,19 @@ public class ImportKennzeichenEnum {
         }
 
         @Override
-        public String toCode(ImportKennzeichen code) {
-            if (code == null) {
+        public String toCode(ImportKennzeichen kennzeichen) {
+            if (kennzeichen == null) {
                 return null;
             }
-            return code.toCode();
+            return kennzeichen.toCode();
         }
 
         @Override
-        public String toSystem(ImportKennzeichen code) {
-            if (code == null) {
+        public String toSystem(ImportKennzeichen kennzeichen) {
+            if (kennzeichen == null) {
                 return null;
             }
-            return code.getSystem();
+            return kennzeichen.getSystem();
         }
     }
 }
