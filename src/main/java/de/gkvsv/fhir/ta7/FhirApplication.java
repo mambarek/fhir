@@ -1,13 +1,13 @@
-package com.example.fhir_p1;
+package de.gkvsv.fhir.ta7;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FhirP1Application {
+public class FhirApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FhirP1Application.class, args);
+        SpringApplication.run(FhirApplication.class, args);
     }
 
 }
