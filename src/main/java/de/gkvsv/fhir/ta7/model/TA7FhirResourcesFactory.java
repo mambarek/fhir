@@ -21,12 +21,12 @@ public class TA7FhirResourcesFactory {
     public Bundle createTA7Bundle(String dateiName, String dateiNummer) {
         Bundle ta7Bundle = new Bundle();
         ta7Bundle.setId(UUID.randomUUID().toString());
-        ta7Bundle.getMeta().getProfile().add(new CanonicalType("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle|1.0.4"));
+        ta7Bundle.getMeta().getProfile().add(new CanonicalType("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle"));
         // tags werden eingebunden nur wenn ein system gesetzt ist
         ta7Bundle.getMeta().addTag().setDisplay("Beispiel der TA7/eAbrechnungsdaten.").
-            setSystem("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle|1.0.4");
+            setSystem("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle");
         ta7Bundle.getMeta().addTag().setDisplay("ACHTUNG! Der fachlich korrekte Inhalt der Beispielinstanz kann nicht gewährleistet werden. Wir sind jederzeit dankbar für Hinweise auf Fehler oder für Verbesserungsvorschläge.").
-            setSystem("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle|1.0.4");
+            setSystem("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle");
 
         ta7Bundle.setType(BundleType.DOCUMENT);
         ta7Bundle.setTimestamp(new Date());
@@ -49,7 +49,7 @@ public class TA7FhirResourcesFactory {
     public Invoice createRechnung(InvoiceStatus status, boolean isIrrlaeufer, String rezeptId, String belegNummer) {
         String rechnungId = UUID.randomUUID().toString();
         Invoice rechnung = new Invoice();
-        rechnung.getMeta().getProfile().add(new CanonicalType("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten|1.0.4"));
+        rechnung.getMeta().getProfile().add(new CanonicalType("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten"));
         rechnung.setId(rechnungId);
         rechnung.setStatus(status);
 

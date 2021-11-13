@@ -1,6 +1,9 @@
 package de.gkvsv.fhir.ta7.model.enums;
 
 import de.gkvsv.fhir.ta7.exceptions.TA7Exception;
+import java.util.Arrays;
+import org.hl7.fhir.r4.model.CodeableConcept;
+import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.EnumFactory;
 
 /**
@@ -8,7 +11,7 @@ import org.hl7.fhir.r4.model.EnumFactory;
  */
 public class ZuAbschlagKeyEnum {
 
-    public enum ZuAbschlagKey implements IFhirEnum{
+    public enum ZuAbschlagKey implements IFhirEnum {
 
         /**
          * Apothekenabschlag nach § 130 SGB V
@@ -96,7 +99,7 @@ public class ZuAbschlagKeyEnum {
 
         @Override
         public String getSystem() {
-            return "https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_ZuAbschlagKey";
+            return "https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Verwurf";
         }
 
         @Override
@@ -143,6 +146,17 @@ public class ZuAbschlagKeyEnum {
         @Override
         public String toSystem(ZuAbschlagKey code) {
             return code.getSystem();
+        }
+
+        public static CodeableConcept getCodeableConcept() {
+            CodeableConcept codeableConcept = new CodeableConcept();
+            Arrays.stream(ZuAbschlagKey.values()).forEach(zuAbschlagKey -> {
+                Coding coding = codeableConcept.addCoding();
+                coding.setCode(zuAbschlagKey.getCode());
+                coding.setSystem(zuAbschlagKey.getSystem());
+            });
+
+            return codeableConcept;
         }
     }
 }
