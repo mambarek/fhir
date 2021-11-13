@@ -35,25 +35,27 @@ class ZusatzDatenHerstellungTest {
 
     @Test
     void testCreate() {
-        ZusatzDatenHerstellung zusatzDatenHerstellung = new ZusatzDatenHerstellung();
-        zusatzDatenHerstellung.setZaehlerHerstellung(1);
 
-        Einheit einheit = new Einheit();
-        einheit.setZaehlerEinheit(1);
-
-        zusatzDatenHerstellung.getEinheiten().add(einheit);
-
-        // Rechnung hinzufügen
+        // Rechnung eAbrechnungsdaten erstellen
         String rechnungId = UUID.randomUUID().toString();
         EAbrechnungsdaten invoice = new EAbrechnungsdaten();
         invoice.setId(rechnungId);
         invoice.setStatus(InvoiceStatus.ISSUED);
 
+        // ZusatzDatenHerstellung
+        ZusatzDatenHerstellung zusatzDatenHerstellung = new ZusatzDatenHerstellung();
+        zusatzDatenHerstellung.setZaehlerHerstellung(1);
+
+        // eine Einheit erstellen
+        Einheit einheit = new Einheit();
+        einheit.setZaehlerEinheit(1);
+
+        zusatzDatenHerstellung.getEinheiten().add(einheit);
 
         invoice.setZusatzDatenHerstellung(zusatzDatenHerstellung);
         invoice.setIrrlaeufer(true);
 
-
+        // Abrechungsposition erstellen
         Abrechnungsposition abrechnungsposition = new Abrechnungsposition();
         abrechnungsposition.setZaehlerAbrechnungsposition(1);
 
@@ -62,12 +64,9 @@ class ZusatzDatenHerstellungTest {
         abrechnungsposition.getZuAbschlaegeZusatzdaten().setZuAbschlagKennzeichen(
             InvoicePriceComponentType.DEDUCTION);
 
-        //CodeableConcept codeableConcept = new CodeableConcept();
-        //codeableConcept.setCoding(ZuAbschlagKey.values())
-        //abrechnungsposition.getZuAbschlaegeZusatzdaten().setZuAbschlagCode(ZuAbschlagKey.GESETZLICHER_HERSTELLER_ABSCHLAG_P130a_A1_UND_A1a);
-        //abrechnungsposition.getZuAbschlaegeZusatzdaten().getZuAbschlagCode2().setCoding(ZuAbschlagKeyFactory.getCodeableConcept().getCoding().get(0));
         einheit.getAbrechnungspositionen().add(abrechnungsposition);
 
+        // Zweite Abrechnungsposition erstellen
         Abrechnungsposition pos2 = new Abrechnungsposition();
         pos2.setZaehlerAbrechnungsposition(2);
 
@@ -78,7 +77,7 @@ class ZusatzDatenHerstellungTest {
 
         einheit.getAbrechnungspositionen().add(pos2);
 
-        // Identifierer
+        // Identifier
         invoice.setPrescriptionId("160.100.000.000.021.76");
         invoice.setBelegnummer("2105000000713456789");
 
@@ -87,21 +86,25 @@ class ZusatzDatenHerstellungTest {
         invoice.setLeistungserbringerTyp(Leistungserbringertyp.KRANKENHAUSAPOTHEKEN);
         invoice.setApothekenIK("90456789");
 
+        // Sammel Bundle erstellen
         Bundle bundle = new Bundle();
+
+        // Entry für die eAbrechnung erstellen
         BundleEntryComponent entryComponent = new BundleEntryComponent();
-        entryComponent.setResource(invoice);
 
         BundleLinkComponent link = new BundleLinkComponent();
         link.setRelation("item");
         link.setUrl("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten");
+
+        // fill entry
         entryComponent.setLink(List.of(link));
         entryComponent.setFullUrl("urn:uuid:" + rechnungId);
+        entryComponent.setResource(invoice);
 
+        // add entry to bundle
         bundle.addEntry(entryComponent);
-        //BundleEntryComponent entryComponent = new BundleEntryComponent();
-        //entryComponent.addExtension(zusatzDatenHerstellung);
-        //final BundleEntryComponent entryComponent1 = bundle.addEntry();
-        //entryComponent1.addExtension(zusatzDatenHerstellung);
+
+        // parse bundle to xml
         final String s = parser.encodeResourceToString(bundle);
         System.out.println(s);
     }
