@@ -11,7 +11,7 @@
     <logger name="ca.uhn.fhir" level="WARN"/>
     <!--<logger name="ca.uhn.fhir.context.ModelScanner" level="INFO"/>-->
 
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
