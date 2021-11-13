@@ -3,11 +3,9 @@ package de.gkvsv.fhir.ta7.model.profiles;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import ca.uhn.fhir.context.FhirContext;
-import ca.uhn.fhir.context.RuntimeResourceDefinition;
 import ca.uhn.fhir.parser.IParser;
 import de.gkvsv.fhir.ta7.model.enums.ImportKennzeichenEnum.ImportKennzeichen;
 import java.util.Date;
-import java.util.IdentityHashMap;
 import java.util.UUID;
 import org.hl7.fhir.r4.model.BooleanType;
 import org.hl7.fhir.r4.model.Bundle;
@@ -17,11 +15,9 @@ import org.hl7.fhir.r4.model.CanonicalType;
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Enumerations;
 import org.hl7.fhir.r4.model.Extension;
-import org.hl7.fhir.r4.model.IdType;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Invoice;
 import org.hl7.fhir.r4.model.Invoice.InvoiceStatus;
-import org.hl7.fhir.r4.model.Meta;
 import org.hl7.fhir.r4.model.Patient;
 import org.hl7.fhir.r4.model.StringType;
 import org.junit.jupiter.api.BeforeAll;
@@ -49,7 +45,10 @@ class EAbrechnungsdatenTest {
         final String id = UUID.randomUUID().toString();
         eAbrechnungsdaten.setId(id);
         eAbrechnungsdaten.addIdentifier().setSystem("urn:mrns").setValue(id);
+
+        //eAbrechnungsdaten.setIrrlaeufer(true);
         eAbrechnungsdaten.setImportKennzeichen(ImportKennzeichen.KEIN_BEZUGS_ARZNEI_MITTEL);
+
 
 
         final String s = parser.encodeResourceToString(eAbrechnungsdaten);
