@@ -1,27 +1,22 @@
 package de.gkvsv.fhir.ta7.model.profiles;
 
-import ca.uhn.fhir.model.api.annotation.Binding;
 import ca.uhn.fhir.model.api.annotation.Child;
 import ca.uhn.fhir.model.api.annotation.Extension;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.util.ElementUtil;
-import de.gkvsv.fhir.ta7.model.enums.ImportKennzeichenEnum.ImportKennzeichen;
-import de.gkvsv.fhir.ta7.model.enums.ImportKennzeichenEnum.ImportKennzeichenEnumFactory;
 import de.gkvsv.fhir.ta7.model.enums.LeistungserbringerSitzEnum.LeistungserbringerSitz;
 import de.gkvsv.fhir.ta7.model.enums.LeistungserbringertypEnum.Leistungserbringertyp;
 import de.gkvsv.fhir.ta7.model.extensions.ZusatzDatenHerstellung;
 import org.hl7.fhir.r4.model.BooleanType;
-import org.hl7.fhir.r4.model.CodeType;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
-import org.hl7.fhir.r4.model.Enumeration;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Invoice;
 
 /**
  * created by mmbarek on 06.11.2021.
  */
-@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten")
+@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten|1.0.4")
 public class EAbrechnungsdaten extends Invoice {
 
     @Child(name = "irrlaeufer")
@@ -32,38 +27,21 @@ public class EAbrechnungsdaten extends Invoice {
     @Extension(url = "http://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_ZusatzdatenHerstellung")
     private ZusatzDatenHerstellung zusatzDatenHerstellung;
 
-    @Child(name = "importKennzeichen", type = {CodeType.class})
-    @Binding(valueSet = "https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Import")
-    private Enumeration<ImportKennzeichen> importKennzeichen;
-
+    /**
+     * this is a reference to Invoice identifier
+     * done throw this.addIdentifier(prescriptionId) in the getter method;
+     */
     private Identifier prescriptionId;
+    /**
+     * this is a reference to Invoice identifier
+     * done throw this.addIdentifier(belegnummer) in the getter method;
+     */
     private Identifier belegnummer;
-
-
-    public ImportKennzeichen getImportKennzeichen() {
-        if(importKennzeichen == null) return null;
-        return importKennzeichen.getValue();
-    }
-
-    public EAbrechnungsdaten setImportKennzeichen(ImportKennzeichen value) {
-        if(value == null) {
-            importKennzeichen = null;
-        } else {
-            if(importKennzeichen == null) {
-                importKennzeichen = new Enumeration<>(new ImportKennzeichenEnumFactory());
-            }
-
-            importKennzeichen.setValue(value);
-        }
-
-        return this;
-    }
 
     @Override
     public boolean isEmpty() {
         return super.isEmpty() &&
             ElementUtil.isEmpty(irrlaeufer) &&
-            ElementUtil.isEmpty(importKennzeichen) &&
             ElementUtil.isEmpty(zusatzDatenHerstellung);
     }
 
@@ -74,31 +52,24 @@ public class EAbrechnungsdaten extends Invoice {
         return irrlaeufer;
     }
 
-    public void setIrrlaeufer(BooleanType irrlaeufer) {
-        if(irrlaeufer == null) {
-            irrlaeufer = new BooleanType();
-        }
-
+    public EAbrechnungsdaten setIrrlaeufer(BooleanType irrlaeufer) {
         this.irrlaeufer = irrlaeufer;
+        return this;
     }
 
-    public void setIrrlaeufer(boolean aBoolean) {
-        if(irrlaeufer == null) {
-            irrlaeufer = new BooleanType();
-        }
-
-        this.irrlaeufer.setValue(aBoolean);
+    public EAbrechnungsdaten setIrrlaeufer(boolean aBoolean) {
+        this.getIrrlaeufer().setValue(aBoolean);
+        return this;
     }
 
     public ZusatzDatenHerstellung getZusatzDatenHerstellung() {
         return zusatzDatenHerstellung;
     }
 
-    public void setZusatzDatenHerstellung(
-        ZusatzDatenHerstellung zusatzDatenHerstellung) {
+    public EAbrechnungsdaten setZusatzDatenHerstellung(ZusatzDatenHerstellung zusatzDatenHerstellung) {
         this.zusatzDatenHerstellung = zusatzDatenHerstellung;
+        return this;
     }
-
 
     public Identifier getPrescriptionId() {
         if(prescriptionId == null) {
@@ -109,8 +80,9 @@ public class EAbrechnungsdaten extends Invoice {
         return prescriptionId;
     }
 
-    public void setPrescriptionId(String prescriptionId) {
+    public EAbrechnungsdaten setPrescriptionId(String prescriptionId) {
         this.getPrescriptionId().setValue(prescriptionId);
+        return this;
     }
 
     public Identifier getBelegnummer() {
@@ -122,23 +94,23 @@ public class EAbrechnungsdaten extends Invoice {
         return belegnummer;
     }
 
-    public void setBelegnummer(String belegnummer) {
+    public EAbrechnungsdaten setBelegnummer(String belegnummer) {
         this.getBelegnummer().setValue(belegnummer);
+        return this;
     }
 
-    public void setLeistungserbringerSitz(LeistungserbringerSitz sitz) {
+    public EAbrechnungsdaten setLeistungserbringerSitz(LeistungserbringerSitz sitz) {
         if(sitz == null) {
-            return;
+            return null;
         }
         String extUrl = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_LE_Sitz";
-        org.hl7.fhir.r4.model.Extension sitzLE = this.getIssuer()
+        org.hl7.fhir.r4.model.Extension sitzLE = getIssuer()
             .getExtensionByUrl(extUrl);
 
         if(sitzLE == null) {
             sitzLE = new org.hl7.fhir.r4.model.Extension();
             sitzLE.setUrl(extUrl);
-
-            this.getIssuer().addExtension(sitzLE);
+            getIssuer().addExtension(sitzLE);
         }
 
         final Coding coding = new Coding();
@@ -146,11 +118,12 @@ public class EAbrechnungsdaten extends Invoice {
         coding.setSystem(sitz.getSystem());
 
         sitzLE.setValue(coding);
+        return this;
     }
 
-    public void setLeistungserbringerTyp(Leistungserbringertyp typ) {
+    public EAbrechnungsdaten setLeistungserbringerTyp(Leistungserbringertyp typ) {
         if(typ == null) {
-            return;
+            return this;
         }
 
         Coding coding = new Coding();
@@ -161,10 +134,12 @@ public class EAbrechnungsdaten extends Invoice {
         codeableConcept.addCoding(coding);
 
         this.getIssuer().getIdentifier().setType(codeableConcept);
+        return this;
     }
 
-    public void setApothekenIK(String ik) {
+    public EAbrechnungsdaten setApothekenIK(String ik) {
         this.getIssuer().getIdentifier().setSystem("http://fhir.de/NamingSystem/arge-ik/iknr");
         this.getIssuer().getIdentifier().setValue(ik);
+        return this;
     }
 }

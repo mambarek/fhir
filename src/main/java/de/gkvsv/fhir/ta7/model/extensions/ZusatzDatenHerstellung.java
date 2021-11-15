@@ -2,6 +2,7 @@ package de.gkvsv.fhir.ta7.model.extensions;
 
 import ca.uhn.fhir.model.api.annotation.Block;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Extension;
 import ca.uhn.fhir.util.ElementUtil;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import org.hl7.fhir.r4.model.PositiveIntType;
  * created by mmbarek on 12.11.2021.
  */
 @Block
+@Description("Zu-/Abschläge auf parenterale Zubereitungen, wirtschaftlichen Einzelmengen etc.")
 public class ZusatzDatenHerstellung extends BackboneElement {
 
     private static final long serialVersionUID = 1L;
@@ -36,12 +38,14 @@ public class ZusatzDatenHerstellung extends BackboneElement {
         return zaehlerHerstellung;
     }
 
-    public void setZaehlerHerstellung(PositiveIntType zaehlerHerstellung) {
+    public ZusatzDatenHerstellung setZaehlerHerstellung(PositiveIntType zaehlerHerstellung) {
         this.zaehlerHerstellung = zaehlerHerstellung;
+        return this;
     }
 
-    public void setZaehlerHerstellung(int zaehlerHerstellung) {
+    public ZusatzDatenHerstellung setZaehlerHerstellung(int zaehlerHerstellung) {
         this.getZaehlerHerstellung().setValue(zaehlerHerstellung);
+        return this;
     }
 
     public List<Einheit> getEinheiten() {
@@ -51,8 +55,9 @@ public class ZusatzDatenHerstellung extends BackboneElement {
         return einheiten;
     }
 
-    public void setEinheiten(List<Einheit> einheiten) {
+    public ZusatzDatenHerstellung setEinheiten(List<Einheit> einheiten) {
         this.einheiten = einheiten;
+        return this;
     }
 
     @Override
@@ -85,13 +90,13 @@ public class ZusatzDatenHerstellung extends BackboneElement {
             if(abrechnungspositionen == null) {
                 abrechnungspositionen = new ArrayList<>();
             }
-
             return abrechnungspositionen;
         }
 
-        public void setAbrechnungspositionen(
+        public Einheit setAbrechnungspositionen(
             List<Abrechnungsposition> abrechnungspositionen) {
             this.abrechnungspositionen = abrechnungspositionen;
+            return this;
         }
 
         public IntegerType getZaehlerEinheit() {
@@ -101,12 +106,14 @@ public class ZusatzDatenHerstellung extends BackboneElement {
             return zaehlerEinheit;
         }
 
-        public void setZaehlerEinheit(IntegerType zaehlerEinheit) {
+        public Einheit setZaehlerEinheit(IntegerType zaehlerEinheit) {
             this.zaehlerEinheit = zaehlerEinheit;
+            return this;
         }
 
-        public void setZaehlerEinheit(int zaehlerEinheit) {
+        public Einheit setZaehlerEinheit(int zaehlerEinheit) {
             this.getZaehlerEinheit().setValue(zaehlerEinheit);
+            return this;
         }
 
         @Override

@@ -4,11 +4,11 @@ import ca.uhn.fhir.model.api.annotation.Block;
 import ca.uhn.fhir.model.api.annotation.Child;
 import ca.uhn.fhir.model.api.annotation.Extension;
 import ca.uhn.fhir.util.ElementUtil;
+import de.gkvsv.fhir.ta7.config.Configuration;
 import de.gkvsv.fhir.ta7.model.enums.ZuAbschlagKeyEnum.ZuAbschlagKey;
 import org.hl7.fhir.r4.model.BackboneElement;
 import org.hl7.fhir.r4.model.CodeType;
 import org.hl7.fhir.r4.model.CodeableConcept;
-import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Enumeration;
 import org.hl7.fhir.r4.model.Invoice.InvoicePriceComponentType;
 import org.hl7.fhir.r4.model.Invoice.InvoicePriceComponentTypeEnumFactory;
@@ -51,50 +51,62 @@ public class ZuAbschlaegeZusatzdaten extends BackboneElement {
 
     public Money getZuAbschlagBetrag() {
         if (zuAbschlagBetrag == null) {
-            zuAbschlagBetrag = new Money().setCurrency("EUR");
+            zuAbschlagBetrag = new Money().setCurrency(Configuration.DEAFULT_CURRENCY);
         }
         return zuAbschlagBetrag;
     }
 
-    public void setZuAbschlagBetrag(long value) {
+
+    /**
+     * Preis-Format muss 1-12 Stellen inkl. Trenner, eventuelles Minusvorzeichen und 2
+     * Nachkommastellen haben. (Regexp = "^(-\\d{1,8}|\\d{1,9})\\.\\d{2}$")
+     * @param value
+     */
+    public ZuAbschlaegeZusatzdaten setZuAbschlagBetrag(double value) {
         this.getZuAbschlagBetrag().setValue(value);
+        return this;
     }
 
-    public void setZuAbschlagBetrag(double value) {
-        this.getZuAbschlagBetrag().setValue(value);
-    }
-
-    public void setZuAbschlagBetrag(Money zuAbschlagBetrag) {
+    public ZuAbschlaegeZusatzdaten setZuAbschlagBetrag(Money zuAbschlagBetrag) {
         this.zuAbschlagBetrag = zuAbschlagBetrag;
+        return this;
     }
 
     @Override
     public ZuAbschlaegeZusatzdaten copy() {
         ZuAbschlaegeZusatzdaten copy = new ZuAbschlaegeZusatzdaten();
+        copy.setZuAbschlagCode(getZuAbschlagCode());
+        copy.setZuAbschlagBetrag(getZuAbschlagBetrag());
+        if(getZuAbschlagKennzeichen() != null) {
+            copy.setZuAbschlagKennzeichen(getZuAbschlagKennzeichen().getValue());
+        }
         return copy;
     }
 
     @Override
     public boolean isEmpty() {
-        return super.isEmpty() && ElementUtil.isEmpty(this.getZuAbschlagBetrag())
-            && this.getZuAbschlagCode().isEmpty();
+        return super.isEmpty()
+            && ElementUtil.isEmpty(getZuAbschlagBetrag())
+            && getZuAbschlagCode().isEmpty();
     }
 
     public CodeableConcept getZuAbschlagCode() {
         if (zuAbschlagCode == null) {
             zuAbschlagCode = new CodeableConcept();
-            final Coding coding = zuAbschlagCode.addCoding();
-            coding.setSystem("https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_ZuAbschlagKey");
+            zuAbschlagCode.addCoding();
         }
-
         return zuAbschlagCode;
     }
 
-    public void setZuAbschlagCode(CodeableConcept code) {
+    public ZuAbschlaegeZusatzdaten setZuAbschlagCode(CodeableConcept code) {
         this.zuAbschlagCode = code;
+        return this;
     }
 
-    public void setZuAbschlagCode(ZuAbschlagKey key) {
-        this.getZuAbschlagCode().getCoding().get(0).setCode(key.getCode());
+    public ZuAbschlaegeZusatzdaten setZuAbschlagCode(ZuAbschlagKey key) {
+        getZuAbschlagCode().getCodingFirstRep()
+            .setCode(key.getCode())
+            .setSystem(key.getSystem());
+        return this;
     }
 }
