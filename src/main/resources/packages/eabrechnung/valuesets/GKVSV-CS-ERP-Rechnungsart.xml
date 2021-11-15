@@ -1,0 +1,52 @@
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-CS-ERP-Rechnungsart" />
+  <url value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Rechnungsart" />
+  <version value="1.1.0" />
+  <name value="GKVSV_CS_ERP_Rechnungsart" />
+  <status value="active" />
+  <experimental value="false" />
+  <date value="2021-11-05" />
+  <publisher value="GKV-Spitzenverband" />
+  <contact>
+    <telecom>
+      <system value="url" />
+      <value value="https://www.gkv-spitzenverband.de/" />
+    </telecom>
+  </contact>
+  <description value="Kennzeichnung der Art der Abrechnung" />
+  <copyright value="GKV-Spitzenverband" />
+  <caseSensitive value="true" />
+  <content value="complete" />
+  <concept>
+    <code value="1" />
+    <display value="Abrechnung der Apotheke und Zahlung über IK der Apotheke durch Krankenkasse" />
+  </concept>
+  <concept>
+    <code value="2" />
+    <display value="Abrechnung über Abrechnungszentrum der Apotheke und Zahlung über IK der Apotheke durch Krankenkasse" />
+  </concept>
+  <concept>
+    <code value="3" />
+    <display value="Abrechnung über Abrechnungszentrum der Apotheke und Zahlung über IK des Abrechnungszentrums durch Krankenkasse" />
+  </concept>
+  <concept>
+    <code value="4" />
+    <display value="Abrechnung der Apotheke  und Zahlung über IK der Apotheke durch Abrechnungszentrum der Krankenkasse" />
+  </concept>
+  <concept>
+    <code value="5" />
+    <display value="Abrechnung des Abrechnungszentrums der Apotheken und Zahlung über IK  der Apotheke durch Abrechnungszentrum der Krankenkasse" />
+  </concept>
+  <concept>
+    <code value="6" />
+    <display value="Abrechnung des Abrechnungszentrums der Apotheken und Zahlung über IK des Abrechnungszentrums der Apotheken durch Abrechnungszentrum der Krankenkasse" />
+  </concept>
+  <concept>
+    <code value="7" />
+    <display value="Einzelrechnung &quot;Krankenkasse&quot; einer Sammelabrechnung" />
+  </concept>
+  <concept>
+    <code value="8" />
+    <display value="Einzelrechnung &quot;Apotheke&quot; einer Sammelabrechnung" />
+  </concept>
+</CodeSystem>

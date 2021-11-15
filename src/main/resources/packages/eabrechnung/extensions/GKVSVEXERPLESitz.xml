@@ -1,0 +1,49 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-EX-ERP-LE-Sitz" />
+  <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_LE_Sitz" />
+  <version value="1.1.0" />
+  <name value="GKVSV_EX_ERP_LE_Sitz" />
+  <title value="GKVSV_EX_ERP_LE_Sitz" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="Leistungserbringer mit Sitz im Inland bzw. Ausland" />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="Invoice.issuer" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_LE_Sitz" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <min value="1" />
+      <type>
+        <code value="Coding" />
+      </type>
+      <binding>
+        <strength value="required" />
+        <description value="Der Code für den Sitz des Leistungserbringers muss aus dem Value Set 'https://fhir.gkvsv.de/ValueSet/GKVSV_VS_ERP_Leistungserbringer_Sitz' gewählt werden." />
+        <valueSet value="https://fhir.gkvsv.de/ValueSet/GKVSV_VS_ERP_Leistungserbringer_Sitz" />
+      </binding>
+    </element>
+    <element id="Extension.value[x].system">
+      <path value="Extension.value[x].system" />
+      <min value="1" />
+      <fixedUri value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Leistungserbringer_Sitz" />
+    </element>
+    <element id="Extension.value[x].code">
+      <path value="Extension.value[x].code" />
+      <short value="1 | 2" />
+      <definition value="1 = Leistungserbringer mit Sitz im Inland; &#xD;&#xA;2 = Leistungserbringer mit Sitz im Ausland" />
+      <min value="1" />
+    </element>
+  </differential>
+</StructureDefinition>

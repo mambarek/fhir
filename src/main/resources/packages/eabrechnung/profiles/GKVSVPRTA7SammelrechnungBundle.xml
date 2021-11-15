@@ -1,0 +1,299 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-PR-TA7-Sammelrechnung-Bundle" />
+  <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle" />
+  <version value="1.1.0" />
+  <name value="GKVSV_PR_TA7_Sammelrechnung_Bundle" />
+  <title value="GKVSV_PR_TA7_Sammelrechnung_Bundle" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="TA7 Sammelrechnung aus Datei - Bundle" />
+  <fhirVersion value="4.0.1" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Bundle" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Bundle" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Bundle.id">
+      <path value="Bundle.id" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.meta">
+      <path value="Bundle.meta" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.meta.profile">
+      <path value="Bundle.meta.profile" />
+      <min value="1" />
+      <max value="1" />
+      <fixedCanonical value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle|1.1.0" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.implicitRules">
+      <path value="Bundle.implicitRules" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.language">
+      <path value="Bundle.language" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.identifier">
+      <path value="Bundle.identifier" />
+      <short value="Dateiname und Dateinummer" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.identifier.extension">
+      <path value="Bundle.identifier.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="1" />
+    </element>
+    <element id="Bundle.identifier.extension:Dateinummer">
+      <path value="Bundle.identifier.extension" />
+      <sliceName value="Dateinummer" />
+      <short value="Dateinummer" />
+      <definition value="fortlaufende Nummer innerhalb eines Jahres, beginnend mit 00001" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_TA7_Dateinummer" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.identifier.extension:Dateinummer.value[x]">
+      <path value="Bundle.identifier.extension.value[x]" />
+      <short value="Dateinummer" />
+      <definition value="fortlaufende Nummer innerhalb eines Jahres, beginnend mit 00001." />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.identifier.use">
+      <path value="Bundle.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.identifier.type">
+      <path value="Bundle.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.identifier.system">
+      <path value="Bundle.identifier.system" />
+      <short value="Dateiname" />
+      <min value="1" />
+      <fixedUri value="https://fhir.gkvsv.de/NamingSystem/GKVSV_NS_Dateiname" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.identifier.value">
+      <path value="Bundle.identifier.value" />
+      <short value="Dateiname" />
+      <min value="1" />
+      <constraint>
+        <key value="Dateiname" />
+        <severity value="error" />
+        <human value="Der Dateiname muss den Konventionen der TA7 entsprechen." />
+        <expression value="toString().matches('^(ARZ|APO|KKR|KRZ|SON)(FHR|FK[1-9])(\\d{2})(\\d{3}|.\\d{2})$')" />
+        <source value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle" />
+      </constraint>
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.identifier.period">
+      <path value="Bundle.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.identifier.assigner">
+      <path value="Bundle.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.type">
+      <path value="Bundle.type" />
+      <fixedCode value="document" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.timestamp">
+      <path value="Bundle.timestamp" />
+      <short value="Erstelldatum der Datei" />
+      <definition value="Erstelldatum/-uhrzeit der Datei.&#xD;&#xA;JJJJMMTT:HHMM (zusammengesetztes Datenelement aus Erstelldatum und Erstelluhrzeit der Datei)" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.total">
+      <path value="Bundle.total" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.link">
+      <path value="Bundle.link" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry">
+      <path value="Bundle.entry" />
+      <slicing>
+        <discriminator>
+          <type value="profile" />
+          <path value="resource" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <short value="Composition, List und Rechnungen" />
+      <definition value="Die Liste der Sammelrechnung_Bundles, die Composition und die darin referenzierten Rechnungen werden hier inhaltlich vollständig aufgeführt." />
+      <min value="4" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_Composition">
+      <path value="Bundle.entry" />
+      <sliceName value="sammelrechnung_Composition" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_Composition.link">
+      <path value="Bundle.entry.link" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_Composition.fullUrl">
+      <path value="Bundle.entry.fullUrl" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_Composition.resource">
+      <path value="Bundle.entry.resource" />
+      <min value="1" />
+      <type>
+        <code value="Resource" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Composition|1.1.0" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_Composition.search">
+      <path value="Bundle.entry.search" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_Composition.request">
+      <path value="Bundle.entry.request" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_Composition.response">
+      <path value="Bundle.entry.response" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_List">
+      <path value="Bundle.entry" />
+      <sliceName value="sammelrechnung_List" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_List.link">
+      <path value="Bundle.entry.link" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_List.fullUrl">
+      <path value="Bundle.entry.fullUrl" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_List.resource">
+      <path value="Bundle.entry.resource" />
+      <min value="1" />
+      <type>
+        <code value="Resource" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_List|1.1.0" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_List.search">
+      <path value="Bundle.entry.search" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_List.request">
+      <path value="Bundle.entry.request" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:sammelrechnung_List.response">
+      <path value="Bundle.entry.response" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:rechnung">
+      <path value="Bundle.entry" />
+      <sliceName value="rechnung" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:rechnung.link">
+      <path value="Bundle.entry.link" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:rechnung.fullUrl">
+      <path value="Bundle.entry.fullUrl" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:rechnung.resource">
+      <path value="Bundle.entry.resource" />
+      <min value="1" />
+      <type>
+        <code value="Resource" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung|1.1.0" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:rechnung.search">
+      <path value="Bundle.entry.search" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:rechnung.request">
+      <path value="Bundle.entry.request" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:rechnung.response">
+      <path value="Bundle.entry.response" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:rezeptBundle">
+      <path value="Bundle.entry" />
+      <sliceName value="rezeptBundle" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:rezeptBundle.link">
+      <path value="Bundle.entry.link" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:rezeptBundle.fullUrl">
+      <path value="Bundle.entry.fullUrl" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:rezeptBundle.resource">
+      <path value="Bundle.entry.resource" />
+      <min value="1" />
+      <type>
+        <code value="Resource" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_RezeptBundle|1.1.0" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:rezeptBundle.search">
+      <path value="Bundle.entry.search" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:rezeptBundle.request">
+      <path value="Bundle.entry.request" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:rezeptBundle.response">
+      <path value="Bundle.entry.response" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.signature">
+      <path value="Bundle.signature" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

@@ -1,0 +1,21 @@
+<NamingSystem xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-NS-Dateiname" />
+  <name value="GKVSV_NS_Dateiname" />
+  <status value="active" />
+  <kind value="identifier" />
+  <date value="2021-11-05" />
+  <publisher value="GKV-Spitzenverband" />
+  <contact>
+    <telecom>
+      <system value="url" />
+      <value value="https://www.gkv-spitzenverband.de/" />
+    </telecom>
+  </contact>
+  <responsible value="GKV-Spitzenverband" />
+  <description value="Dateiname" />
+  <uniqueId>
+    <type value="uri" />
+    <value value="https://fhir.gkvsv.de/NamingSystem/GKVSV_NS_Dateiname" />
+    <preferred value="true" />
+  </uniqueId>
+</NamingSystem>

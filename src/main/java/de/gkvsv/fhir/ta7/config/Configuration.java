@@ -5,5 +5,5 @@ package de.gkvsv.fhir.ta7.config;
  */
 public class Configuration {
 
-    public static final String DEAFULT_CURRENCY = "EUR";
+    public static final String DEFAULT_CURRENCY = "EUR";
 }

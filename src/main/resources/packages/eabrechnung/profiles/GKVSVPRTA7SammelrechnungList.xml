@@ -1,0 +1,142 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-PR-TA7-Sammelrechnung-List" />
+  <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_List" />
+  <version value="1.1.0" />
+  <name value="GKVSV_PR_TA7_Sammelrechnung_List" />
+  <title value="GKVSV_PR_TA7_Sammelrechnung_List" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="Die Liste führt alle TA7_Sammelrechnung_Bundles auf." />
+  <fhirVersion value="4.0.1" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="List" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/List" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="List.id">
+      <path value="List.id" />
+      <mustSupport value="true" />
+    </element>
+    <element id="List.meta">
+      <path value="List.meta" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="List.meta.profile">
+      <path value="List.meta.profile" />
+      <min value="1" />
+      <max value="1" />
+      <fixedCanonical value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_List|1.1.0" />
+      <mustSupport value="true" />
+    </element>
+    <element id="List.implicitRules">
+      <path value="List.implicitRules" />
+      <max value="0" />
+    </element>
+    <element id="List.language">
+      <path value="List.language" />
+      <max value="0" />
+    </element>
+    <element id="List.text">
+      <path value="List.text" />
+      <max value="0" />
+    </element>
+    <element id="List.contained">
+      <path value="List.contained" />
+      <max value="0" />
+    </element>
+    <element id="List.identifier">
+      <path value="List.identifier" />
+      <max value="0" />
+    </element>
+    <element id="List.status">
+      <path value="List.status" />
+      <fixedCode value="current" />
+    </element>
+    <element id="List.mode">
+      <path value="List.mode" />
+      <fixedCode value="working" />
+    </element>
+    <element id="List.title">
+      <path value="List.title" />
+      <max value="0" />
+    </element>
+    <element id="List.code">
+      <path value="List.code" />
+      <max value="0" />
+    </element>
+    <element id="List.subject">
+      <path value="List.subject" />
+      <max value="0" />
+    </element>
+    <element id="List.encounter">
+      <path value="List.encounter" />
+      <max value="0" />
+    </element>
+    <element id="List.date">
+      <path value="List.date" />
+      <max value="0" />
+    </element>
+    <element id="List.source">
+      <path value="List.source" />
+      <max value="0" />
+    </element>
+    <element id="List.orderedBy">
+      <path value="List.orderedBy" />
+      <max value="0" />
+    </element>
+    <element id="List.note">
+      <path value="List.note" />
+      <max value="0" />
+    </element>
+    <element id="List.entry">
+      <path value="List.entry" />
+      <short value="TA7_Sammelrechnung_Bundle Referenzen" />
+      <definition value="Hier werden alle TA7_Sammelrechnung_Bundle referenziert." />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="List.entry.flag">
+      <path value="List.entry.flag" />
+      <max value="0" />
+    </element>
+    <element id="List.entry.deleted">
+      <path value="List.entry.deleted" />
+      <max value="0" />
+    </element>
+    <element id="List.entry.date">
+      <path value="List.entry.date" />
+      <max value="0" />
+    </element>
+    <element id="List.entry.item">
+      <path value="List.entry.item" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="List.entry.item.reference">
+      <path value="List.entry.item.reference" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="List.entry.item.type">
+      <path value="List.entry.item.type" />
+      <max value="0" />
+    </element>
+    <element id="List.entry.item.identifier">
+      <path value="List.entry.item.identifier" />
+      <max value="0" />
+    </element>
+    <element id="List.entry.item.display">
+      <path value="List.entry.item.display" />
+      <max value="0" />
+    </element>
+    <element id="List.emptyReason">
+      <path value="List.emptyReason" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

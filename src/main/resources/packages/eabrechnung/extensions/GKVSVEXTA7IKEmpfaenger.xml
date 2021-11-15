@@ -1,0 +1,72 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-EX-TA7-IK-Empfaenger" />
+  <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_TA7_IK_Empfaenger" />
+  <version value="1.1.0" />
+  <name value="GKVSV_EX_TA7_IK_Empfaenger" />
+  <title value="GKVSV_EX_TA7_IK_Empfaenger" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="Institutionskennzeichen des Empfängers" />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="Composition" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension">
+      <path value="Extension" />
+      <short value="Receiver IK" />
+      <definition value="Institutionskennzeichen des Empfängers" />
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_TA7_IK_Empfaenger" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <min value="1" />
+      <type>
+        <code value="Identifier" />
+      </type>
+    </element>
+    <element id="Extension.value[x].use">
+      <path value="Extension.value[x].use" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].type">
+      <path value="Extension.value[x].type" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].system">
+      <path value="Extension.value[x].system" />
+      <min value="1" />
+      <fixedUri value="http://fhir.de/NamingSystem/arge-ik/iknr" />
+    </element>
+    <element id="Extension.value[x].value">
+      <path value="Extension.value[x].value" />
+      <short value="IK des Empfängers" />
+      <definition value="Institutionskennzeichen des Empfängers mit Entschlüsselungsbefugnis, bei Krankenkassen das IK aus der Kostenträgerdatei" />
+      <min value="1" />
+      <constraint>
+        <key value="EmpfaengerIK-length" />
+        <severity value="error" />
+        <human value="Die IK des Empfängers muss 9 Zeichen lang und numerisch sein." />
+        <expression value="toString().matches('^\\d{9}$')" />
+        <source value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_TA7_IK_Empfaenger" />
+      </constraint>
+    </element>
+    <element id="Extension.value[x].period">
+      <path value="Extension.value[x].period" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].assigner">
+      <path value="Extension.value[x].assigner" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

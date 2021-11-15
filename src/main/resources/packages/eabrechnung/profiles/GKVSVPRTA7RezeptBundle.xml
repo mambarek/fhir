@@ -1,0 +1,286 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-PR-TA7-RezeptBundle" />
+  <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_RezeptBundle" />
+  <version value="1.1.0" />
+  <name value="GKVSV_PR_TA7_RezeptBundle" />
+  <title value="GKVSV_PR_TA7_RezeptBundle" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="Dieses Bundle verbindet die eRezept Verordnungsdaten, Quittungsdaten, Abgabedaten und Abrechnungsdaten" />
+  <fhirVersion value="4.0.1" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Bundle" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Bundle" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Bundle.id">
+      <path value="Bundle.id" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.meta">
+      <path value="Bundle.meta" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.meta.profile">
+      <path value="Bundle.meta.profile" />
+      <min value="1" />
+      <max value="1" />
+      <fixedCanonical value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_RezeptBundle|1.1.0" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.implicitRules">
+      <path value="Bundle.implicitRules" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.language">
+      <path value="Bundle.language" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.identifier">
+      <path value="Bundle.identifier" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.type">
+      <path value="Bundle.type" />
+      <fixedCode value="collection" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.timestamp">
+      <path value="Bundle.timestamp" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.total">
+      <path value="Bundle.total" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.link">
+      <path value="Bundle.link" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry">
+      <path value="Bundle.entry" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="link.url" />
+        </discriminator>
+        <ordered value="true" />
+        <rules value="closed" />
+      </slicing>
+      <min value="4" />
+      <max value="4" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Verordnungsdaten">
+      <path value="Bundle.entry" />
+      <sliceName value="Verordnungsdaten" />
+      <short value="Verordnungsdatensatz" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Verordnungsdaten.link">
+      <path value="Bundle.entry.link" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Verordnungsdaten.link.relation">
+      <path value="Bundle.entry.link.relation" />
+      <fixedString value="item" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Verordnungsdaten.link.url">
+      <path value="Bundle.entry.link.url" />
+      <fixedUri value="https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Verordnungsdaten.fullUrl">
+      <path value="Bundle.entry.fullUrl" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Verordnungsdaten.resource">
+      <path value="Bundle.entry.resource" />
+      <short value="Verordnungsdatensatz" />
+      <definition value="Der Verordnungsdatensatz (https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle) soll als base64Binary im Profil erxBinary enthalten sein." />
+      <min value="1" />
+      <type>
+        <code value="Resource" />
+        <profile value="https://gematik.de/fhir/StructureDefinition/ErxBinary" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Verordnungsdaten.search">
+      <path value="Bundle.entry.search" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:Verordnungsdaten.request">
+      <path value="Bundle.entry.request" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:Verordnungsdaten.response">
+      <path value="Bundle.entry.response" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:Quittungsdaten">
+      <path value="Bundle.entry" />
+      <sliceName value="Quittungsdaten" />
+      <short value="Quittungsdatensatz" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Quittungsdaten.link">
+      <path value="Bundle.entry.link" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Quittungsdaten.link.relation">
+      <path value="Bundle.entry.link.relation" />
+      <fixedString value="item" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Quittungsdaten.link.url">
+      <path value="Bundle.entry.link.url" />
+      <fixedUri value="https://gematik.de/fhir/StructureDefinition/ErxReceipt" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Quittungsdaten.fullUrl">
+      <path value="Bundle.entry.fullUrl" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Quittungsdaten.resource">
+      <path value="Bundle.entry.resource" />
+      <short value="Quittungsdatensatz" />
+      <min value="1" />
+      <type>
+        <code value="Resource" />
+        <profile value="https://gematik.de/fhir/StructureDefinition/ErxBinary" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Quittungsdaten.search">
+      <path value="Bundle.entry.search" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:Quittungsdaten.request">
+      <path value="Bundle.entry.request" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:Quittungsdaten.response">
+      <path value="Bundle.entry.response" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:Abgabedaten">
+      <path value="Bundle.entry" />
+      <sliceName value="Abgabedaten" />
+      <short value="Abgabedatensatz" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Abgabedaten.link">
+      <path value="Bundle.entry.link" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Abgabedaten.link.relation">
+      <path value="Bundle.entry.link.relation" />
+      <fixedString value="item" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Abgabedaten.link.url">
+      <path value="Bundle.entry.link.url" />
+      <fixedUri value="http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle" />
+    </element>
+    <element id="Bundle.entry:Abgabedaten.fullUrl">
+      <path value="Bundle.entry.fullUrl" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Abgabedaten.resource">
+      <path value="Bundle.entry.resource" />
+      <short value="Abgabedatensatz" />
+      <definition value="Der Abgabedatensatz (http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/PR-eRezeptAbgabedatenBundle) soll als base64Binary im Profil erxBinary enthalten sein." />
+      <min value="1" />
+      <type>
+        <code value="Resource" />
+        <profile value="https://gematik.de/fhir/StructureDefinition/ErxBinary" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Abgabedaten.search">
+      <path value="Bundle.entry.search" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:Abgabedaten.request">
+      <path value="Bundle.entry.request" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:Abgabedaten.response">
+      <path value="Bundle.entry.response" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:Abrechnungsdaten">
+      <path value="Bundle.entry" />
+      <sliceName value="Abrechnungsdaten" />
+      <short value="Abrechnungsdatensatz" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Abrechnungsdaten.link">
+      <path value="Bundle.entry.link" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Abrechnungsdaten.link.relation">
+      <path value="Bundle.entry.link.relation" />
+      <fixedString value="item" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Abrechnungsdaten.link.url">
+      <path value="Bundle.entry.link.url" />
+      <fixedUri value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Abrechnungsdaten.fullUrl">
+      <path value="Bundle.entry.fullUrl" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Abrechnungsdaten.resource">
+      <path value="Bundle.entry.resource" />
+      <short value="Abrechnungsdatensatz" />
+      <min value="1" />
+      <type>
+        <code value="Resource" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Bundle.entry:Abrechnungsdaten.search">
+      <path value="Bundle.entry.search" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:Abrechnungsdaten.request">
+      <path value="Bundle.entry.request" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.entry:Abrechnungsdaten.response">
+      <path value="Bundle.entry.response" />
+      <max value="0" />
+    </element>
+    <element id="Bundle.signature">
+      <path value="Bundle.signature" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

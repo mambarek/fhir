@@ -1,0 +1,42 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-EX-ERP-Irrlaeufer" />
+  <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Irrlaeufer" />
+  <version value="1.1.0" />
+  <name value="GKVSV_EX_ERP_Irrlaeufer" />
+  <title value="GKVSV_EX_ERP_Irrlaeufer" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="Kennzeichen Irrläuferrezept" />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="Invoice" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension">
+      <path value="Extension" />
+      <short value="Kennzeichen Irrläufer" />
+      <definition value="Extension zur Kennzeichnung einer Abrechnung als Irrläufer." />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Irrlaeufer" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <short value="Kennzeichen für Irrläuferrezepte" />
+      <definition value="Kennzeichen für Irrläuferrezepte:&#xD;&#xA;0 = kein Irrläuferrezept&#xD;&#xA;1 = Irrläuferrezept" />
+      <min value="1" />
+      <type>
+        <code value="boolean" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>

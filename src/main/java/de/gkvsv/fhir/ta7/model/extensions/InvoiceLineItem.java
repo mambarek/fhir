@@ -1,6 +1,5 @@
 package de.gkvsv.fhir.ta7.model.extensions;
 
-import ca.uhn.fhir.model.api.annotation.Binding;
 import ca.uhn.fhir.model.api.annotation.Block;
 import ca.uhn.fhir.model.api.annotation.Child;
 import ca.uhn.fhir.model.api.annotation.Extension;
@@ -82,7 +81,7 @@ public class InvoiceLineItem extends InvoiceLineItemComponent {
 
     public Money getVatValue() {
         if (vatValue == null) {
-            vatValue = new Money().setCurrency(Configuration.DEAFULT_CURRENCY);
+            vatValue = new Money().setCurrency(Configuration.DEFAULT_CURRENCY);
         }
         return vatValue;
     }
@@ -137,7 +136,7 @@ public class InvoiceLineItem extends InvoiceLineItemComponent {
     public InvoiceLineItem setZuAbschlagBetrag(double betrag) {
         this.getPriceComponentFirstRep().getAmount()
             .setValue(betrag)
-            .setCurrency(Configuration.DEAFULT_CURRENCY);
+            .setCurrency(Configuration.DEFAULT_CURRENCY);
         return this;
     }
 }

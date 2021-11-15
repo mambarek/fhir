@@ -1,0 +1,482 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-PR-TA7-Sammelrechnung-Composition" />
+  <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Composition" />
+  <version value="1.1.0" />
+  <name value="GKVSV_PR_TA7_Sammelrechnung_Composition" />
+  <title value="GKVSV_PR_TA7_Sammelrechnung_Composition" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="TA7 Sammelrechnung - Composition" />
+  <fhirVersion value="4.0.1" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Composition" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Composition" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Composition.id">
+      <path value="Composition.id" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.meta">
+      <path value="Composition.meta" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.meta.profile">
+      <path value="Composition.meta.profile" />
+      <min value="1" />
+      <max value="1" />
+      <fixedCanonical value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Composition|1.1.0" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.implicitRules">
+      <path value="Composition.implicitRules" />
+      <max value="0" />
+    </element>
+    <element id="Composition.language">
+      <path value="Composition.language" />
+      <max value="0" />
+    </element>
+    <element id="Composition.text">
+      <path value="Composition.text" />
+      <max value="0" />
+    </element>
+    <element id="Composition.contained">
+      <path value="Composition.contained" />
+      <max value="0" />
+    </element>
+    <element id="Composition.extension">
+      <path value="Composition.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="2" />
+    </element>
+    <element id="Composition.extension:empfaengerIK">
+      <path value="Composition.extension" />
+      <sliceName value="empfaengerIK" />
+      <short value="Empfänger-IK" />
+      <definition value="IK des Empfängers" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_TA7_IK_Empfaenger" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.extension:empfaengerIK.value[x]">
+      <path value="Composition.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.extension:empfaengerIK.value[x].system">
+      <path value="Composition.extension.value[x].system" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.extension:empfaengerIK.value[x].value">
+      <path value="Composition.extension.value[x].value" />
+      <short value="Empfänger-IK" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.extension:kostentraegerIK">
+      <path value="Composition.extension" />
+      <sliceName value="kostentraegerIK" />
+      <short value="Kostenträger-IK" />
+      <definition value="IK des Kostenträgers" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_TA7_IK_Kostentraeger" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.extension:kostentraegerIK.value[x]">
+      <path value="Composition.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.extension:kostentraegerIK.value[x].system">
+      <path value="Composition.extension.value[x].system" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.extension:kostentraegerIK.value[x].value">
+      <path value="Composition.extension.value[x].value" />
+      <short value="Kostenträger-IK" />
+      <definition value="IK des Kostenträgers" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.identifier">
+      <path value="Composition.identifier" />
+      <max value="0" />
+    </element>
+    <element id="Composition.status">
+      <path value="Composition.status" />
+      <fixedCode value="final" />
+    </element>
+    <element id="Composition.type.coding">
+      <path value="Composition.type.coding" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Composition.type.coding.system">
+      <path value="Composition.type.coding.system" />
+      <min value="1" />
+      <fixedUri value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_TA7" />
+    </element>
+    <element id="Composition.type.coding.version">
+      <path value="Composition.type.coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Composition.type.coding.code">
+      <path value="Composition.type.coding.code" />
+      <min value="1" />
+      <fixedCode value="SR" />
+    </element>
+    <element id="Composition.type.coding.display">
+      <path value="Composition.type.coding.display" />
+      <fixedString value="Sammelrechnung" />
+    </element>
+    <element id="Composition.type.coding.userSelected">
+      <path value="Composition.type.coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Composition.type.text">
+      <path value="Composition.type.text" />
+      <max value="0" />
+    </element>
+    <element id="Composition.category">
+      <path value="Composition.category" />
+      <max value="0" />
+    </element>
+    <element id="Composition.subject">
+      <path value="Composition.subject" />
+      <max value="0" />
+    </element>
+    <element id="Composition.encounter">
+      <path value="Composition.encounter" />
+      <max value="0" />
+    </element>
+    <element id="Composition.date">
+      <path value="Composition.date" />
+      <short value="Abrechnungszeitraum" />
+      <definition value="Anzugeben ist der letzte Tag des Abrechnungszeitraums" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.author">
+      <path value="Composition.author" />
+      <short value="Absender-IK" />
+      <definition value="IK des Absenders" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.author.reference">
+      <path value="Composition.author.reference" />
+      <max value="0" />
+    </element>
+    <element id="Composition.author.type">
+      <path value="Composition.author.type" />
+      <max value="0" />
+    </element>
+    <element id="Composition.author.identifier">
+      <path value="Composition.author.identifier" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.author.identifier.use">
+      <path value="Composition.author.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Composition.author.identifier.type">
+      <path value="Composition.author.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Composition.author.identifier.system">
+      <path value="Composition.author.identifier.system" />
+      <min value="1" />
+      <fixedUri value="http://fhir.de/NamingSystem/arge-ik/iknr" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.author.identifier.value">
+      <path value="Composition.author.identifier.value" />
+      <short value="Absender-IK" />
+      <definition value="IK des Absenders" />
+      <min value="1" />
+      <constraint>
+        <key value="AbsenderIK-length" />
+        <severity value="error" />
+        <human value="Die IK des Absenders muss 9 Zeichen lang und numerisch sein." />
+        <expression value="toString().matches('^\\d{9}$')" />
+        <source value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Composition" />
+      </constraint>
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.author.identifier.period">
+      <path value="Composition.author.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Composition.author.identifier.assigner">
+      <path value="Composition.author.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Composition.author.display">
+      <path value="Composition.author.display" />
+      <max value="0" />
+    </element>
+    <element id="Composition.title">
+      <path value="Composition.title" />
+      <fixedString value="elektronische Sammelrechnung" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.confidentiality">
+      <path value="Composition.confidentiality" />
+      <max value="0" />
+    </element>
+    <element id="Composition.attester">
+      <path value="Composition.attester" />
+      <max value="0" />
+    </element>
+    <element id="Composition.custodian">
+      <path value="Composition.custodian" />
+      <max value="0" />
+    </element>
+    <element id="Composition.relatesTo">
+      <path value="Composition.relatesTo" />
+      <max value="0" />
+    </element>
+    <element id="Composition.event">
+      <path value="Composition.event" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section">
+      <path value="Composition.section" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="code.coding.code" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="2" />
+      <max value="2" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe">
+      <path value="Composition.section" />
+      <sliceName value="sammelrechnungListe" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.title">
+      <path value="Composition.section.title" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.code">
+      <path value="Composition.section.code" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.code.coding">
+      <path value="Composition.section.code.coding" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.code.coding.system">
+      <path value="Composition.section.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_TA7" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.code.coding.version">
+      <path value="Composition.section.code.coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.code.coding.code">
+      <path value="Composition.section.code.coding.code" />
+      <min value="1" />
+      <fixedCode value="LSR" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.code.coding.display">
+      <path value="Composition.section.code.coding.display" />
+      <fixedString value="Liste der Sammelrechnungen" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.code.coding.userSelected">
+      <path value="Composition.section.code.coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.code.text">
+      <path value="Composition.section.code.text" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.author">
+      <path value="Composition.section.author" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.focus">
+      <path value="Composition.section.focus" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.text">
+      <path value="Composition.section.text" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.mode">
+      <path value="Composition.section.mode" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.orderedBy">
+      <path value="Composition.section.orderedBy" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.entry">
+      <path value="Composition.section.entry" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_List" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.entry.reference">
+      <path value="Composition.section.entry.reference" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.entry.type">
+      <path value="Composition.section.entry.type" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.entry.identifier">
+      <path value="Composition.section.entry.identifier" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.entry.display">
+      <path value="Composition.section.entry.display" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.emptyReason">
+      <path value="Composition.section.emptyReason" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:sammelrechnungListe.section">
+      <path value="Composition.section.section" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen">
+      <path value="Composition.section" />
+      <sliceName value="rechnungen" />
+      <short value="Rechnungen" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:rechnungen.title">
+      <path value="Composition.section.title" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen.code">
+      <path value="Composition.section.code" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:rechnungen.code.coding">
+      <path value="Composition.section.code.coding" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:rechnungen.code.coding.system">
+      <path value="Composition.section.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_TA7" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:rechnungen.code.coding.version">
+      <path value="Composition.section.code.coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen.code.coding.code">
+      <path value="Composition.section.code.coding.code" />
+      <min value="1" />
+      <fixedCode value="R" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:rechnungen.code.coding.display">
+      <path value="Composition.section.code.coding.display" />
+      <fixedString value="Rechnungen" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:rechnungen.code.coding.userSelected">
+      <path value="Composition.section.code.coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen.code.text">
+      <path value="Composition.section.code.text" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen.author">
+      <path value="Composition.section.author" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen.focus">
+      <path value="Composition.section.focus" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen.text">
+      <path value="Composition.section.text" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen.mode">
+      <path value="Composition.section.mode" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen.orderedBy">
+      <path value="Composition.section.orderedBy" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen.entry">
+      <path value="Composition.section.entry" />
+      <short value="Referenzen zu den einzelnen Rechnungen" />
+      <min value="1" />
+      <type>
+        <code value="Reference" />
+        <targetProfile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:rechnungen.entry.reference">
+      <path value="Composition.section.entry.reference" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Composition.section:rechnungen.entry.type">
+      <path value="Composition.section.entry.type" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen.entry.identifier">
+      <path value="Composition.section.entry.identifier" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen.entry.display">
+      <path value="Composition.section.entry.display" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen.emptyReason">
+      <path value="Composition.section.emptyReason" />
+      <max value="0" />
+    </element>
+    <element id="Composition.section:rechnungen.section">
+      <path value="Composition.section.section" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

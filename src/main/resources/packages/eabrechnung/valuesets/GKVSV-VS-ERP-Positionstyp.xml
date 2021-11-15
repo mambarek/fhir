@@ -1,0 +1,23 @@
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-VS-ERP-Positionstyp" />
+  <url value="https://fhir.gkvsv.de/ValueSet/GKVSV_VS_ERP_Positionstyp" />
+  <version value="1.1.0" />
+  <name value="GKVSV_VS_ERP_Positionstyp" />
+  <title value="GKVSV_VS_ERP_Positionstyp" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <publisher value="GKV-Spitzenverband" />
+  <contact>
+    <telecom>
+      <system value="url" />
+      <value value="https://www.gkv-spitzenverband.de/" />
+    </telecom>
+  </contact>
+  <description value="Kennzeichen Positionstyp" />
+  <copyright value="GKV-Spitzenverband" />
+  <compose>
+    <include>
+      <system value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Positionstyp" />
+    </include>
+  </compose>
+</ValueSet>

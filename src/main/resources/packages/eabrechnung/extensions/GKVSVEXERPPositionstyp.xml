@@ -1,0 +1,71 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-EX-ERP-Positionstyp" />
+  <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Positionstyp" />
+  <version value="1.1.0" />
+  <name value="GKVSV_EX_ERP_Positionstyp" />
+  <title value="GKVSV_EX_ERP_Positionstyp" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="Kennzeichen Positionstyp" />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="Invoice.lineItem" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension">
+      <path value="Extension" />
+      <short value="Kennzeichen Nullposition" />
+      <definition value="0 = Nullposition &#xD;&#xA;1 = übrige Position" />
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Positionstyp" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <min value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <binding>
+        <strength value="required" />
+        <description value="Der Positionstyp muss vom Typ 'Nullposition' oder 'übrige Position' sein." />
+        <valueSet value="https://fhir.gkvsv.de/ValueSet/GKVSV_VS_ERP_Positionstyp" />
+      </binding>
+    </element>
+    <element id="Extension.value[x].coding">
+      <path value="Extension.value[x].coding" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Extension.value[x].coding.system">
+      <path value="Extension.value[x].coding.system" />
+      <min value="1" />
+      <fixedUri value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Positionstyp" />
+    </element>
+    <element id="Extension.value[x].coding.version">
+      <path value="Extension.value[x].coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].coding.code">
+      <path value="Extension.value[x].coding.code" />
+      <short value="0 | 1" />
+      <definition value="0 = Nullposition&#xD;&#xA;1 = übrige Position" />
+      <min value="1" />
+    </element>
+    <element id="Extension.value[x].coding.userSelected">
+      <path value="Extension.value[x].coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].text">
+      <path value="Extension.value[x].text" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

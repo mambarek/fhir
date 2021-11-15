@@ -1,0 +1,39 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-EX-ERP-TA7-Abrechnungszeitraum" />
+  <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_TA7_Abrechnungszeitraum" />
+  <version value="1.1.0" />
+  <name value="GKVSV_EX_ERP_TA7_Abrechnungszeitraum" />
+  <title value="GKVSV_EX_ERP_TA7_Abrechnungszeitraum" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="Letzter Tag des Abrechnungszeitraums" />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="Composition" />
+  </context>
+  <context>
+    <type value="element" />
+    <expression value="Invoice" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_TA7_Abrechnungszeitraum" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <short value="Abrechnungszeitraum" />
+      <definition value="Anzugeben ist der letzte Tag des Abrechnungszeitraums" />
+      <min value="1" />
+      <type>
+        <code value="dateTime" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>

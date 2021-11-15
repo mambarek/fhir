@@ -51,7 +51,7 @@ public class ZuAbschlaegeZusatzdaten extends BackboneElement {
 
     public Money getZuAbschlagBetrag() {
         if (zuAbschlagBetrag == null) {
-            zuAbschlagBetrag = new Money().setCurrency(Configuration.DEAFULT_CURRENCY);
+            zuAbschlagBetrag = new Money().setCurrency(Configuration.DEFAULT_CURRENCY);
         }
         return zuAbschlagBetrag;
     }

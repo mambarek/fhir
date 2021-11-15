@@ -1,0 +1,32 @@
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-CS-ERP-Leistungserbringertyp" />
+  <url value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Leistungserbringertyp" />
+  <version value="1.1.0" />
+  <name value="GKVSV_CS_ERP_Leistungserbringertyp" />
+  <status value="active" />
+  <experimental value="false" />
+  <date value="2021-11-05" />
+  <publisher value="GKV-Spitzenverband" />
+  <contact>
+    <telecom>
+      <system value="url" />
+      <value value="https://www.gkv-spitzenverband.de/" />
+    </telecom>
+  </contact>
+  <description value="Eindeutiges Merkmal zur Identifizierung des Leistungserbringertyps für interne Zwecke der Krankenkassen" />
+  <copyright value="GKV-Spitzenverband" />
+  <caseSensitive value="true" />
+  <content value="complete" />
+  <concept>
+    <code value="A" />
+    <display value="Öffentliche Apotheken" />
+  </concept>
+  <concept>
+    <code value="K" />
+    <display value="Krankenhausapotheken" />
+  </concept>
+  <concept>
+    <code value="S" />
+    <display value="Sonstige Leistungserbringer" />
+  </concept>
+</CodeSystem>

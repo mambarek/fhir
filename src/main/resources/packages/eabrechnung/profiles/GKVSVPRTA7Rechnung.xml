@@ -1,0 +1,321 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-PR-TA7-Rechnung" />
+  <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung" />
+  <version value="1.1.0" />
+  <name value="GKVSV_PR_TA7_Rechnung" />
+  <title value="GKVSV_PR_TA7_Rechnung" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="Rechnung an den Kostenträger" />
+  <fhirVersion value="4.0.1" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Invoice" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Invoice" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Invoice.id">
+      <path value="Invoice.id" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.meta">
+      <path value="Invoice.meta" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.meta.profile">
+      <path value="Invoice.meta.profile" />
+      <min value="1" />
+      <max value="1" />
+      <fixedCanonical value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung|1.1.0" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.implicitRules">
+      <path value="Invoice.implicitRules" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.language">
+      <path value="Invoice.language" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.text">
+      <path value="Invoice.text" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.contained">
+      <path value="Invoice.contained" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.extension">
+      <path value="Invoice.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="2" />
+    </element>
+    <element id="Invoice.extension:abrechnungszeitraum">
+      <path value="Invoice.extension" />
+      <sliceName value="abrechnungszeitraum" />
+      <short value="Abrechnungszeitraum" />
+      <definition value="Anzugeben ist der letzte Tag des Abrechnungszeitraums" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_TA7_Abrechnungszeitraum" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:abrechnungszeitraum.value[x]">
+      <path value="Invoice.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:referenceRezeptBundle">
+      <path value="Invoice.extension" />
+      <sliceName value="referenceRezeptBundle" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_RezeptBundleReferenz" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:referenceRezeptBundle.extension">
+      <path value="Invoice.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="1" />
+    </element>
+    <element id="Invoice.extension:referenceRezeptBundle.extension:lineItem">
+      <path value="Invoice.extension.extension" />
+      <sliceName value="lineItem" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:referenceRezeptBundle.extension:lineItem.value[x]">
+      <path value="Invoice.extension.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:referenceRezeptBundle.extension:lineItem.value[x].reference">
+      <path value="Invoice.extension.extension.value[x].reference" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.identifier">
+      <path value="Invoice.identifier" />
+      <short value="Sammelrechnungsnummer" />
+      <definition value="Sammelrechnungsnummer des Zahlungsempfängers. Es muss sich um eine eindeutige nachrichtentyp-übergreifende Rechnungsnummer handeln." />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.identifier.use">
+      <path value="Invoice.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.identifier.type">
+      <path value="Invoice.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.identifier.system">
+      <path value="Invoice.identifier.system" />
+      <min value="1" />
+      <fixedUri value="https://fhir.gkvsv.de/NamingSystem/GKVSV_NS_Sammelrechnungsnummer" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.identifier.value">
+      <path value="Invoice.identifier.value" />
+      <short value="Sammelrechnungsnummer" />
+      <definition value="Sammelrechnungsnummer des Zahlungsempfängers. Es muss sich um eine eindeutige nachrichtentyp-übergreifende Rechnungsnummer handeln." />
+      <min value="1" />
+      <constraint>
+        <key value="Sammelrechnungsnummer-maxLength" />
+        <severity value="error" />
+        <human value="Die Sammelrechnungsnummer darf maximal 20 Zeichen lang sein." />
+        <expression value="length()&lt;=20" />
+        <source value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung" />
+      </constraint>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.identifier.period">
+      <path value="Invoice.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.identifier.assigner">
+      <path value="Invoice.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.status">
+      <path value="Invoice.status" />
+      <fixedCode value="issued" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.cancelledReason">
+      <path value="Invoice.cancelledReason" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.type">
+      <path value="Invoice.type" />
+      <short value="Rechnungsart" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.type.coding">
+      <path value="Invoice.type.coding" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+      <binding>
+        <strength value="required" />
+        <description value="Die Kennzeichnung der Art der Abrechnung muss aus dem Value Set 'https://fhir.gkvsv.de/ValueSet/GKVSV_VS_ERP_Rechnungsart' gewählt werden." />
+        <valueSet value="https://fhir.gkvsv.de/ValueSet/GKVSV_VS_ERP_Rechnungsart" />
+      </binding>
+    </element>
+    <element id="Invoice.type.coding.system">
+      <path value="Invoice.type.coding.system" />
+      <min value="1" />
+      <fixedUri value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Rechnungsart" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.type.coding.version">
+      <path value="Invoice.type.coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.type.coding.code">
+      <path value="Invoice.type.coding.code" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.type.coding.display">
+      <path value="Invoice.type.coding.display" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.type.coding.userSelected">
+      <path value="Invoice.type.coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.type.text">
+      <path value="Invoice.type.text" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.subject">
+      <path value="Invoice.subject" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.recipient">
+      <path value="Invoice.recipient" />
+      <short value="Kostenträger-IK" />
+      <definition value="IK des Kostenträgers" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.recipient.reference">
+      <path value="Invoice.recipient.reference" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.recipient.type">
+      <path value="Invoice.recipient.type" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.recipient.identifier">
+      <path value="Invoice.recipient.identifier" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.recipient.identifier.use">
+      <path value="Invoice.recipient.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.recipient.identifier.type">
+      <path value="Invoice.recipient.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.recipient.identifier.type.text">
+      <path value="Invoice.recipient.identifier.type.text" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.recipient.identifier.system">
+      <path value="Invoice.recipient.identifier.system" />
+      <min value="1" />
+      <fixedUri value="http://fhir.de/NamingSystem/arge-ik/iknr" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.recipient.identifier.value">
+      <path value="Invoice.recipient.identifier.value" />
+      <short value="Kostenträger-IK" />
+      <definition value="IK des Kostenträgers" />
+      <min value="1" />
+      <constraint>
+        <key value="KostentraegerID-length" />
+        <severity value="error" />
+        <human value="Die IK des Kostenträgers muss 9 Zeichen lang und numerisch sein." />
+        <expression value="toString().matches('^\\d{9}$')" />
+        <source value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung" />
+      </constraint>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.recipient.identifier.period">
+      <path value="Invoice.recipient.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.recipient.identifier.assigner">
+      <path value="Invoice.recipient.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.recipient.display">
+      <path value="Invoice.recipient.display" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.date">
+      <path value="Invoice.date" />
+      <short value="Rechnungsdatum" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.participant">
+      <path value="Invoice.participant" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.issuer">
+      <path value="Invoice.issuer" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.account">
+      <path value="Invoice.account" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.lineItem">
+      <path value="Invoice.lineItem" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.totalPriceComponent">
+      <path value="Invoice.totalPriceComponent" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.totalNet">
+      <path value="Invoice.totalNet" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.totalGross">
+      <path value="Invoice.totalGross" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.paymentTerms">
+      <path value="Invoice.paymentTerms" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.note">
+      <path value="Invoice.note" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

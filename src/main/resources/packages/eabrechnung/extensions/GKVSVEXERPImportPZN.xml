@@ -1,0 +1,68 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-EX-ERP-Import-PZN" />
+  <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import_PZN" />
+  <version value="1.1.0" />
+  <name value="GKVSV_EX_ERP_Import_PZN" />
+  <title value="GKVSV_EX_ERP_Import_PZN" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="PZN des Originals für Importe" />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="Invoice.lineItem" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import_PZN" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <min value="1" />
+      <type>
+        <code value="Coding" />
+      </type>
+      <binding>
+        <strength value="preferred" />
+        <description value="Die PZN kann aus dem ValueSet 'http://fhir.de/ValueSet/ifa/pzn' entnommen werden." />
+        <valueSet value="http://fhir.de/ValueSet/ifa/pzn" />
+      </binding>
+    </element>
+    <element id="Extension.value[x].system">
+      <path value="Extension.value[x].system" />
+      <min value="1" />
+      <fixedUri value="http://fhir.de/CodeSystem/ifa/pzn" />
+    </element>
+    <element id="Extension.value[x].version">
+      <path value="Extension.value[x].version" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].code">
+      <path value="Extension.value[x].code" />
+      <short value="PZN" />
+      <definition value="Das Feld muss gefüllt werden, wenn das Feld „Import“ den Wert „1“ oder „2“ beinhaltet. Anzugeben ist die PZN des Bezugsarzneimittels (Original). Es sind nur die Ziffern 0 bis 9 zulässig. &#xD;&#xA;Hinweis: Die in der 8-stelligen Pharmazentralnummer enthaltene Prüfziffer muss mit dem Modulo11-Verfahren konform sein" />
+      <min value="1" />
+      <constraint>
+        <key value="zulaessigeZeichenPZN" />
+        <severity value="error" />
+        <human value="Die PZN des Originals für Importe muss 8 Zeichen lang sein. Es sind nur die Ziffern 0 bis 9 zulässig." />
+        <expression value="toString().matches('^\\d{8}$')" />
+        <source value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import_PZN" />
+      </constraint>
+    </element>
+    <element id="Extension.value[x].display">
+      <path value="Extension.value[x].display" />
+      <max value="0" />
+    </element>
+    <element id="Extension.value[x].userSelected">
+      <path value="Extension.value[x].userSelected" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

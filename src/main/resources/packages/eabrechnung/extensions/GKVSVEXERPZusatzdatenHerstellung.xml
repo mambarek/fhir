@@ -1,0 +1,333 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-EX-ERP-ZusatzdatenHerstellung" />
+  <url value="http://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_ZusatzdatenHerstellung" />
+  <version value="1.1.0" />
+  <name value="GKVSV_EX_ERP_ZusatzdatenHerstellung" />
+  <title value="GKVSV_EX_ERP_ZusatzdatenHerstellung" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="Zusatzdaten Herstellung" />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="Invoice" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension">
+      <path value="Extension" />
+      <short value="Zusatzdaten Herstellung" />
+      <definition value="Zu-/Abschläge auf parenterale Zubereitungen, wirtschaftlichen Einzelmengen etc." />
+    </element>
+    <element id="Extension.extension">
+      <path value="Extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Extension.extension:zaehlerHerstellung">
+      <path value="Extension.extension" />
+      <sliceName value="zaehlerHerstellung" />
+      <short value="Zähler Herstellung" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:zaehlerHerstellung.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="zaehlerHerstellung" />
+    </element>
+    <element id="Extension.extension:zaehlerHerstellung.value[x]">
+      <path value="Extension.extension.value[x]" />
+      <short value="Zähler Herstellung" />
+      <min value="1" />
+      <type>
+        <code value="positiveInt" />
+      </type>
+      <minValuePositiveInt value="1" />
+      <maxValuePositiveInt value="99" />
+    </element>
+    <element id="Extension.extension:einheit">
+      <path value="Extension.extension" />
+      <sliceName value="einheit" />
+      <short value="Einheit" />
+      <min value="1" />
+    </element>
+    <element id="Extension.extension:einheit.extension">
+      <path value="Extension.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Extension.extension:einheit.extension:zaehlerEinheit">
+      <path value="Extension.extension.extension" />
+      <sliceName value="zaehlerEinheit" />
+      <short value="Zähler Einheit" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:einheit.extension:zaehlerEinheit.url">
+      <path value="Extension.extension.extension.url" />
+      <fixedUri value="zaehlerEinheit" />
+    </element>
+    <element id="Extension.extension:einheit.extension:zaehlerEinheit.value[x]">
+      <path value="Extension.extension.extension.value[x]" />
+      <short value="Zähler Einheit" />
+      <min value="1" />
+      <type>
+        <code value="positiveInt" />
+      </type>
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition">
+      <path value="Extension.extension.extension" />
+      <sliceName value="abrechnungsposition" />
+      <short value="Abrechnungsposition" />
+      <min value="1" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension">
+      <path value="Extension.extension.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zaehlerAbrechnungsposition">
+      <path value="Extension.extension.extension.extension" />
+      <sliceName value="zaehlerAbrechnungsposition" />
+      <short value="Zähler Abrechnungsposition" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zaehlerAbrechnungsposition.url">
+      <path value="Extension.extension.extension.extension.url" />
+      <fixedUri value="zaehlerAbrechnungsposition" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zaehlerAbrechnungsposition.value[x]">
+      <path value="Extension.extension.extension.extension.value[x]" />
+      <short value="Zähler Abrechnungsposition" />
+      <min value="1" />
+      <type>
+        <code value="positiveInt" />
+      </type>
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:verwurf_geprueft">
+      <path value="Extension.extension.extension.extension" />
+      <sliceName value="verwurf_geprueft" />
+      <short value="Verwurf geprüft" />
+      <definition value="Kennzeichen gemäß Vertrag über die Preis-bildung für Stoffe und Zubereitungen aus Stoffen (Hilfstaxe) Anlage 3 Teil 1 Anhang 3.&#xD;&#xA;Dieses Feld ist zu füllen, wenn ein unvermeidbarer Verwurf abgerechnet wird (Faktorkennzeichen = 99).&#xD;&#xA;1 = Entspricht den Regelungen&#xD;&#xA;2 = Prüfung nachgelagert durch zentrale Stelle&#xD;&#xA;3 = Unzulässige Menge Verwurf (Verwurf größer als kleinste Packungseinheit)&#xD;&#xA;4 = Nicht in HA3 enthalten und damit nicht prüfbar&#xD;&#xA;5 = Apotheke stellt nicht selbst her und es werden andere Stoffe als in Anhang 1 verwendet&#xD;&#xA;6 = Zeitspanne zu klein für erneuten Verwurf&#xD;&#xA;7 = Kennzeichen des Herstellenden nach DAV-Vergabe existiert nicht und Verwurf damit nicht prüfbar" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:verwurf_geprueft.url">
+      <path value="Extension.extension.extension.extension.url" />
+      <fixedUri value="verwurf_geprueft" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:verwurf_geprueft.value[x]">
+      <path value="Extension.extension.extension.extension.value[x]" />
+      <min value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <binding>
+        <strength value="required" />
+        <description value="Der Code muss aus dem ValueSet 'GKVSV_VS_ERP_Verwurf' gewählt werden." />
+        <valueSet value="https://fhir.gkvsv.de/ValueSet/GKVSV_VS_ERP_Verwurf" />
+      </binding>
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:verwurf_geprueft.value[x].coding">
+      <path value="Extension.extension.extension.extension.value[x].coding" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:verwurf_geprueft.value[x].coding.system">
+      <path value="Extension.extension.extension.extension.value[x].coding.system" />
+      <min value="1" />
+      <fixedUri value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Verwurf" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:verwurf_geprueft.value[x].coding.version">
+      <path value="Extension.extension.extension.extension.value[x].coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:verwurf_geprueft.value[x].coding.code">
+      <path value="Extension.extension.extension.extension.value[x].coding.code" />
+      <short value="Verwurf geprüft" />
+      <definition value="Kennzeichen gemäß Vertrag über die Preis-bildung für Stoffe und Zubereitungen aus Stoffen (Hilfstaxe) Anlage 3 Teil 1 Anhang 3. Dieses Feld ist zu füllen, wenn ein unvermeidbarer Verwurf abgerechnet wird (Faktorkennzeichen = 99). &#xD;&#xA;1 = Entspricht den Regelungen &#xD;&#xA;2 = Prüfung nachgelagert durch zentrale Stelle &#xD;&#xA;3 = Unzulässige Menge Verwurf (Verwurf größer als kleinste Packungseinheit) &#xD;&#xA;4 = Nicht in HA3 enthalten und damit nicht prüfbar &#xD;&#xA;5 = Apotheke stellt nicht selbst her und es werden andere Stoffe als in Anhang 1 verwendet &#xD;&#xA;6 = Zeitspanne zu klein für erneuten Verwurf &#xD;&#xA;7 = Kennzeichen des Herstellenden nach DAV-Vergabe existiert nicht und Verwurf damit nicht prüfbar" />
+      <min value="1" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:verwurf_geprueft.value[x].coding.userSelected">
+      <path value="Extension.extension.extension.extension.value[x].coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:verwurf_geprueft.value[x].text">
+      <path value="Extension.extension.extension.extension.value[x].text" />
+      <max value="0" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten">
+      <path value="Extension.extension.extension.extension" />
+      <sliceName value="zuAbschlaegeZusatzdaten" />
+      <short value="Zu- und Abschläge auf Zusatzdaten" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension">
+      <path value="Extension.extension.extension.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode">
+      <path value="Extension.extension.extension.extension.extension" />
+      <sliceName value="zuAbschlagCode" />
+      <short value="Zu-/Abschlag" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode.url">
+      <path value="Extension.extension.extension.extension.extension.url" />
+      <fixedUri value="zuAbschlagCode" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode.value[x]">
+      <path value="Extension.extension.extension.extension.extension.value[x]" />
+      <min value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <binding>
+        <strength value="required" />
+        <description value="Der Code muss aus dem ValueSet 'GKVSV_VS_ERP_ZuAbschlagKey' gewählt werden." />
+        <valueSet value="https://fhir.gkvsv.de/ValueSet/GKVSV_VS_ERP_ZuAbschlagKey" />
+      </binding>
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode.value[x].coding">
+      <path value="Extension.extension.extension.extension.extension.value[x].coding" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode.value[x].coding.system">
+      <path value="Extension.extension.extension.extension.extension.value[x].coding.system" />
+      <min value="1" />
+      <fixedUri value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_ZuAbschlagKey" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode.value[x].coding.version">
+      <path value="Extension.extension.extension.extension.extension.value[x].coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode.value[x].coding.code">
+      <path value="Extension.extension.extension.extension.extension.value[x].coding.code" />
+      <short value="Zu-/Abschlag" />
+      <definition value="R001 = Apothekenabschlag nach § 130 SGB V; &#xD;&#xA;R003 = Sonstiger Abschlag/Rabatt; &#xD;&#xA;R004 = Gesetzlicher Herstellerabschlag nach § 130a Absatz 1 und Absatz 1a SGB V; &#xD;&#xA;R005 = Gesetzlicher Herstellerabschlag nach § 130a Absatz 3a SGB V; &#xD;&#xA;R006 = Gesetzlicher Herstellerabschlag nach § 130a Absatz 3b SGB V; &#xD;&#xA;R007 = Rabattangabe der vom Kostenträger aufgrund von Verträgen nach § 130a Abs. 8 i.V.m. § 31 Abs. 2 SGB V zusätzlich übernommenen Mehrkosten; &#xD;&#xA;R008 = Rabattangabe aufgrund von Verträgen nach § 130a Abs. 8 SGB V ohne Berücksichtigung der Rabattangaben nach Schlüssel R007; &#xD;&#xA;R009 = Gesetzlicher Herstellerabschlag nach § 130a Abs. 2 SGB V" />
+      <min value="1" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode.value[x].coding.userSelected">
+      <path value="Extension.extension.extension.extension.extension.value[x].coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode.value[x].text">
+      <path value="Extension.extension.extension.extension.extension.value[x].text" />
+      <max value="0" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagKennzeichen">
+      <path value="Extension.extension.extension.extension.extension" />
+      <sliceName value="zuAbschlagKennzeichen" />
+      <short value="Kennzeichen Zu-/Abschlag" />
+      <definition value="Kennzeichen Zu-/Abschlag&#xD;&#xA;&#xD;&#xA;surcharge  = Zuschlag;&#xD;&#xA;deduction = Abschlag&#xD;&#xA;&#xD;&#xA;Das Kennzeichen Zu- oder Abschlag dient als zusätzliche Information zum Betrag, der ein negatives Vorzeichen (Abschlag) haben kann." />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagKennzeichen.url">
+      <path value="Extension.extension.extension.extension.extension.url" />
+      <fixedUri value="zuAbschlagKennzeichen" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagKennzeichen.value[x]">
+      <path value="Extension.extension.extension.extension.extension.value[x]" />
+      <short value="surcharge | deduction" />
+      <definition value="Kennzeichen Zu-/Abschlag&#xD;&#xA;&#xD;&#xA;surcharge  = Zuschlag;&#xD;&#xA;deduction = Abschlag&#xD;&#xA;&#xD;&#xA;Das Kennzeichen Zu- oder Abschlag dient als zusätzliche Information zum Betrag, der ein negatives Vorzeichen (Abschlag) haben kann." />
+      <min value="1" />
+      <type>
+        <code value="code" />
+      </type>
+      <constraint>
+        <key value="surchargeOrDeduction" />
+        <severity value="error" />
+        <human value="Es sind nur die Kennzeichen &quot;surcharge&quot; (Zuschlag) oder &quot;deduction&quot; (Abschlag) zulässig." />
+        <expression value="matches('surcharge') or matches('deduction')" />
+        <source value="Extension" />
+      </constraint>
+      <binding>
+        <strength value="required" />
+        <description value="Codes indicating the kind of the price component." />
+        <valueSet value="http://hl7.org/fhir/ValueSet/invoice-priceComponentType|4.0.1" />
+      </binding>
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagBetrag">
+      <path value="Extension.extension.extension.extension.extension" />
+      <sliceName value="zuAbschlagBetrag" />
+      <short value="Betrag Zu-/Abschlag" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagBetrag.url">
+      <path value="Extension.extension.extension.extension.extension.url" />
+      <fixedUri value="zuAbschlagBetrag" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagBetrag.value[x]">
+      <path value="Extension.extension.extension.extension.extension.value[x]" />
+      <min value="1" />
+      <type>
+        <code value="Money" />
+        <profile value="http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-PreisangabeEUR" />
+      </type>
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagBetrag.value[x].value">
+      <path value="Extension.extension.extension.extension.extension.value[x].value" />
+      <short value="Betrag Zu-/Abschlag" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.url">
+      <path value="Extension.extension.extension.extension.url" />
+      <fixedUri value="zuAbschlaegeZusatzdaten" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.value[x]">
+      <path value="Extension.extension.extension.extension.value[x]" />
+      <max value="0" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.url">
+      <path value="Extension.extension.extension.url" />
+      <fixedUri value="abrechnungsposition" />
+    </element>
+    <element id="Extension.extension:einheit.extension:abrechnungsposition.value[x]">
+      <path value="Extension.extension.extension.value[x]" />
+      <max value="0" />
+    </element>
+    <element id="Extension.extension:einheit.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="einheit" />
+    </element>
+    <element id="Extension.extension:einheit.value[x]">
+      <path value="Extension.extension.value[x]" />
+      <max value="0" />
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="http://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_ZusatzdatenHerstellung" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

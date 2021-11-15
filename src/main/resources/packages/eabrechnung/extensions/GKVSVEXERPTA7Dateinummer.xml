@@ -1,0 +1,40 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-EX-ERP-TA7-Dateinummer" />
+  <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_TA7_Dateinummer" />
+  <version value="1.1.0" />
+  <name value="GKVSV_EX_ERP_TA7_Dateinummer" />
+  <title value="GKVSV_EX_ERP_TA7_Dateinummer" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="TA7 Dateinummer" />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <context>
+    <type value="element" />
+    <expression value="Bundle.identifier" />
+  </context>
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_TA7_Dateinummer" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <min value="1" />
+      <type>
+        <code value="string" />
+      </type>
+      <constraint>
+        <key value="Dateinummer-length" />
+        <severity value="error" />
+        <human value="Die Dateinummer muss 5 Zeichen lang sein (beginnend mit 00001)." />
+        <expression value="length()=5" />
+        <source value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_TA7_Dateinummer" />
+      </constraint>
+    </element>
+  </differential>
+</StructureDefinition>

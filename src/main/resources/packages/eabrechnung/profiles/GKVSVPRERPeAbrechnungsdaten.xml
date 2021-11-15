@@ -1,0 +1,781 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="GKVSV-PR-ERP-eAbrechnungsdaten" />
+  <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten" />
+  <version value="1.1.0" />
+  <name value="GKVSV_PR_ERP_eAbrechnungsdaten" />
+  <title value="GKVSV_PR_ERP_eAbrechnungsdaten" />
+  <status value="active" />
+  <date value="2021-11-05" />
+  <description value="eRezept - elektronische Abrechnungsdaten" />
+  <fhirVersion value="4.0.1" />
+  <kind value="resource" />
+  <abstract value="false" />
+  <type value="Invoice" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Invoice" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Invoice.id">
+      <path value="Invoice.id" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.meta">
+      <path value="Invoice.meta" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.meta.profile">
+      <path value="Invoice.meta.profile" />
+      <min value="1" />
+      <max value="1" />
+      <fixedCanonical value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.implicitRules">
+      <path value="Invoice.implicitRules" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.language">
+      <path value="Invoice.language" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.text">
+      <path value="Invoice.text" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.contained">
+      <path value="Invoice.contained" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.extension">
+      <path value="Invoice.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="1" />
+    </element>
+    <element id="Invoice.extension:irrlaeufer">
+      <path value="Invoice.extension" />
+      <sliceName value="irrlaeufer" />
+      <short value="Kennzeichen für Irrläuferrezepte" />
+      <definition value="Kennzeichen für Irrläuferrezept:&#xD;&#xA;0 = kein Irrläuferrezept&#xD;&#xA;1 = Irrläuferrezept" />
+      <min value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Irrlaeufer" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:irrlaeufer.value[x]">
+      <path value="Invoice.extension.value[x]" />
+      <definition value="Kennzeichen für Irrläuferrezept:&#xD;&#xA;false: 0 = kein Irrläuferrezept; &#xD;&#xA;true: 1 = Irrläuferrezept" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung">
+      <path value="Invoice.extension" />
+      <sliceName value="zusatzdatenHerstellung" />
+      <min value="0" />
+      <max value="99" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_ZusatzdatenHerstellung" />
+      </type>
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension">
+      <path value="Invoice.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="2" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:zaehlerHerstellung">
+      <path value="Invoice.extension.extension" />
+      <sliceName value="zaehlerHerstellung" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:zaehlerHerstellung.value[x]">
+      <path value="Invoice.extension.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit">
+      <path value="Invoice.extension.extension" />
+      <sliceName value="einheit" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension">
+      <path value="Invoice.extension.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="2" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:zaehlerEinheit">
+      <path value="Invoice.extension.extension.extension" />
+      <sliceName value="zaehlerEinheit" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:zaehlerEinheit.value[x]">
+      <path value="Invoice.extension.extension.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition">
+      <path value="Invoice.extension.extension.extension" />
+      <sliceName value="abrechnungsposition" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension">
+      <path value="Invoice.extension.extension.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="1" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension:zaehlerAbrechnungsposition">
+      <path value="Invoice.extension.extension.extension.extension" />
+      <sliceName value="zaehlerAbrechnungsposition" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension:zaehlerAbrechnungsposition.value[x]">
+      <path value="Invoice.extension.extension.extension.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten">
+      <path value="Invoice.extension.extension.extension.extension" />
+      <sliceName value="zuAbschlaegeZusatzdaten" />
+      <min value="0" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension">
+      <path value="Invoice.extension.extension.extension.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="3" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode">
+      <path value="Invoice.extension.extension.extension.extension.extension" />
+      <sliceName value="zuAbschlagCode" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode.value[x]">
+      <path value="Invoice.extension.extension.extension.extension.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode.value[x].coding">
+      <path value="Invoice.extension.extension.extension.extension.extension.value[x].coding" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode.value[x].coding.system">
+      <path value="Invoice.extension.extension.extension.extension.extension.value[x].coding.system" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagCode.value[x].coding.code">
+      <path value="Invoice.extension.extension.extension.extension.extension.value[x].coding.code" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagKennzeichen">
+      <path value="Invoice.extension.extension.extension.extension.extension" />
+      <sliceName value="zuAbschlagKennzeichen" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagKennzeichen.value[x]">
+      <path value="Invoice.extension.extension.extension.extension.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagBetrag">
+      <path value="Invoice.extension.extension.extension.extension.extension" />
+      <sliceName value="zuAbschlagBetrag" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.extension:zusatzdatenHerstellung.extension:einheit.extension:abrechnungsposition.extension:zuAbschlaegeZusatzdaten.extension:zuAbschlagBetrag.value[x]">
+      <path value="Invoice.extension.extension.extension.extension.extension.value[x]" />
+      <short value="Betrag Zu-/Abschlag" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.identifier">
+      <path value="Invoice.identifier" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="system" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="2" />
+      <max value="2" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.identifier:rezeptID">
+      <path value="Invoice.identifier" />
+      <sliceName value="rezeptID" />
+      <short value="Rezept-ID" />
+      <definition value="Eindeutige Identifikation der Verordnung (Dokumenten-ID), auf die sich die Abrechnungsdaten beziehen." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Identifier" />
+        <profile value="https://gematik.de/fhir/StructureDefinition/ErxPrescriptionID" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.identifier:rezeptID.use">
+      <path value="Invoice.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.identifier:rezeptID.type">
+      <path value="Invoice.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.identifier:rezeptID.value">
+      <path value="Invoice.identifier.value" />
+      <short value="Rezept-ID" />
+      <constraint>
+        <key value="Rezept-ID-length" />
+        <severity value="error" />
+        <human value="Die Rezept-ID muss 22 Zeichen lang sein" />
+        <expression value="length()=22" />
+        <source value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten" />
+      </constraint>
+    </element>
+    <element id="Invoice.identifier:rezeptID.period">
+      <path value="Invoice.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.identifier:rezeptID.assigner">
+      <path value="Invoice.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.identifier:belegnummer">
+      <path value="Invoice.identifier" />
+      <sliceName value="belegnummer" />
+      <short value="Eindeutige Belegnummer" />
+      <definition value="Belegnummer mit Aufbau entsprechend der Technischen Anlage 1 zzgl. vorangestelltes Jahrzehnt (2-stelliges Jahr, 2-stelliger Monat, 8-stellige Zählnummer und IK ohne die ersten beiden Stellen oder dreistelliges Identifikationsmerkmal." />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.identifier:belegnummer.use">
+      <path value="Invoice.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.identifier:belegnummer.type">
+      <path value="Invoice.identifier.type" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.identifier:belegnummer.system">
+      <path value="Invoice.identifier.system" />
+      <min value="1" />
+      <fixedUri value="https://fhir.gkvsv.de/NamingSystem/GKVSV_NS_Belegnummer" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.identifier:belegnummer.value">
+      <path value="Invoice.identifier.value" />
+      <short value="Eindeutige Belegnummer" />
+      <definition value="Belegnummer mit Aufbau entsprechend der Technischen Anlage 1 zzgl. vorangestelltes Jahrzehnt (2-stelliges Jahr, 2-stelliger Monat, 8-stellige Zählnummer und IK ohne die ersten beiden Stellen oder dreistelliges Identifikationsmerkmal." />
+      <min value="1" />
+      <constraint>
+        <key value="Belegnummer-length" />
+        <severity value="error" />
+        <human value="Die eindeutige Belegnummer muss numerisch und 19 Zeichen lang sein." />
+        <expression value="toString().matches('^\\d{19}$')" />
+        <source value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten" />
+      </constraint>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.identifier:belegnummer.period">
+      <path value="Invoice.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.identifier:belegnummer.assigner">
+      <path value="Invoice.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.status">
+      <path value="Invoice.status" />
+      <fixedCode value="issued" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.cancelledReason">
+      <path value="Invoice.cancelledReason" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.type">
+      <path value="Invoice.type" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.subject">
+      <path value="Invoice.subject" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.recipient">
+      <path value="Invoice.recipient" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.date">
+      <path value="Invoice.date" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.participant">
+      <path value="Invoice.participant" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.issuer">
+      <path value="Invoice.issuer" />
+      <short value="Leistungserbringertyp und Apotheken-IK" />
+      <definition value="Leistungserbringertyp und IK der abrechnenden Apotheke" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.issuer.extension">
+      <path value="Invoice.issuer.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="1" />
+    </element>
+    <element id="Invoice.issuer.extension:sitzLE">
+      <path value="Invoice.issuer.extension" />
+      <sliceName value="sitzLE" />
+      <short value="Leistungserbringer Sitz" />
+      <definition value="Leistungserbringer Sitz im Inland / Ausland" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_LE_Sitz" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.issuer.extension:sitzLE.value[x]">
+      <path value="Invoice.issuer.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.issuer.extension:sitzLE.value[x].system">
+      <path value="Invoice.issuer.extension.value[x].system" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.issuer.extension:sitzLE.value[x].version">
+      <path value="Invoice.issuer.extension.value[x].version" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.issuer.extension:sitzLE.value[x].code">
+      <path value="Invoice.issuer.extension.value[x].code" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.issuer.extension:sitzLE.value[x].display">
+      <path value="Invoice.issuer.extension.value[x].display" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.issuer.extension:sitzLE.value[x].userSelected">
+      <path value="Invoice.issuer.extension.value[x].userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.issuer.reference">
+      <path value="Invoice.issuer.reference" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.issuer.type">
+      <path value="Invoice.issuer.type" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.issuer.identifier">
+      <path value="Invoice.issuer.identifier" />
+      <short value="Leistungserbringertyp und Apotheken-IK" />
+      <definition value="Leistungserbringertyp und IK der abrechnenden Apotheke" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.issuer.identifier.use">
+      <path value="Invoice.issuer.identifier.use" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.issuer.identifier.type">
+      <path value="Invoice.issuer.identifier.type" />
+      <min value="1" />
+      <mustSupport value="true" />
+      <binding>
+        <strength value="required" />
+        <description value="Der Leistungserbringertyp muss aus dem Value Set 'https://fhir.gkvsv.de/ValueSet/GKVSV_VS_ERP_Leistungserbringertyp' gewählt werden." />
+        <valueSet value="https://fhir.gkvsv.de/ValueSet/GKVSV_VS_ERP_Leistungserbringertyp" />
+      </binding>
+    </element>
+    <element id="Invoice.issuer.identifier.type.coding">
+      <path value="Invoice.issuer.identifier.type.coding" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+      <binding>
+        <strength value="required" />
+        <description value="Der Leistungserbringertyp muss aus dem Value Set 'https://fhir.gkvsv.de/ValueSet/GKVSV_VS_ERP_Leistungserbringertyp' gewählt werden." />
+        <valueSet value="https://fhir.gkvsv.de/ValueSet/GKVSV_VS_ERP_Leistungserbringertyp" />
+      </binding>
+    </element>
+    <element id="Invoice.issuer.identifier.type.coding.system">
+      <path value="Invoice.issuer.identifier.type.coding.system" />
+      <min value="1" />
+      <fixedUri value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Leistungserbringertyp" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.issuer.identifier.type.coding.version">
+      <path value="Invoice.issuer.identifier.type.coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.issuer.identifier.type.coding.code">
+      <path value="Invoice.issuer.identifier.type.coding.code" />
+      <short value="A | K | S" />
+      <definition value="A = Öffentliche Apotheken; &#xD;&#xA;K = Krankenhausapotheken; &#xD;&#xA;S = Sonstige Leistungserbringer" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.issuer.identifier.type.coding.display">
+      <path value="Invoice.issuer.identifier.type.coding.display" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.issuer.identifier.type.coding.userSelected">
+      <path value="Invoice.issuer.identifier.type.coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.issuer.identifier.type.text">
+      <path value="Invoice.issuer.identifier.type.text" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.issuer.identifier.system">
+      <path value="Invoice.issuer.identifier.system" />
+      <min value="1" />
+      <fixedUri value="http://fhir.de/NamingSystem/arge-ik/iknr" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.issuer.identifier.value">
+      <path value="Invoice.issuer.identifier.value" />
+      <short value="Apotheken-IK" />
+      <definition value="IK der abrechnenden Apotheke" />
+      <min value="1" />
+      <constraint>
+        <key value="ApothekeIK-length" />
+        <severity value="error" />
+        <human value="Die IK der abrechnenden Apotheke muss 9 Zeichen lang und numerisch sein." />
+        <expression value="toString().matches('^\\d{9}$')" />
+        <source value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten" />
+      </constraint>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.issuer.identifier.period">
+      <path value="Invoice.issuer.identifier.period" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.issuer.identifier.assigner">
+      <path value="Invoice.issuer.identifier.assigner" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.issuer.display">
+      <path value="Invoice.issuer.display" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.account">
+      <path value="Invoice.account" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.lineItem">
+      <path value="Invoice.lineItem" />
+      <label value="Line Data" />
+      <short value="Abrechnungszeile" />
+      <min value="1" />
+      <constraint>
+        <key value="lineItemImportPZN-1" />
+        <severity value="error" />
+        <human value="Die PZN des Originals für Importe muss angegeben werden, wenn das Kennzeichen zum Import den Wert „1“ oder „2“ hat." />
+        <expression value="(extension('https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import').exists() and ((extension('https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import').value as CodeableConcept).coding.code = '1' or (extension('https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import').value as CodeableConcept).coding.code = '2')) implies extension('https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import_PZN').exists()" />
+        <source value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten" />
+      </constraint>
+      <constraint>
+        <key value="lineItemImportPZN-2" />
+        <severity value="error" />
+        <human value="Die PZN des Originals für Importe darf nur angegeben werden, wenn das Kennzeichen zum Import den Wert „1“ oder „2“ hat." />
+        <expression value="extension('https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import_PZN').exists() implies (extension('https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import').exists() and ((extension('https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import').value as CodeableConcept).coding.code = '1' or (extension('https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import').value as CodeableConcept).coding.code = '2'))" />
+        <source value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten" />
+      </constraint>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension">
+      <path value="Invoice.lineItem.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+      <min value="2" />
+    </element>
+    <element id="Invoice.lineItem.extension:positionstyp">
+      <path value="Invoice.lineItem.extension" />
+      <sliceName value="positionstyp" />
+      <short value="Kennzeichen Positionstyp" />
+      <definition value="0 = Nullposition&#xD;&#xA;1 = übrige Position" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Positionstyp" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:positionstyp.value[x]">
+      <path value="Invoice.lineItem.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:positionstyp.value[x].coding">
+      <path value="Invoice.lineItem.extension.value[x].coding" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:positionstyp.value[x].coding.system">
+      <path value="Invoice.lineItem.extension.value[x].coding.system" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:positionstyp.value[x].coding.code">
+      <path value="Invoice.lineItem.extension.value[x].coding.code" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:import">
+      <path value="Invoice.lineItem.extension" />
+      <sliceName value="import" />
+      <short value="Kennzeichen zum Import" />
+      <definition value="Schlüssel: &#xD;&#xA;0 = kein Import &#xD;&#xA;1 = Import mit gesetzlichem Preisabstand zum Bezugsarzneimittel (Original) im Sinne des Rahmenvertrages zu § 129 SGB V &#xD;&#xA;2 = Import unterhalb des gesetzlichen Preisabstandes zum Bezugsarzneimittel (Original) im Sinne des Rahmenvertrages zu § 129 SGB V &#xD;&#xA;3 = Import, zu dem kein Bezugsarzneimittel (Original) existiert Das Feld muss gefüllt werden, wenn das Feld „Kennzeichen nach § 4“ eine PZN eines Fertigarzneimittels beinhaltet." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import" />
+      </type>
+    </element>
+    <element id="Invoice.lineItem.extension:import.value[x]">
+      <path value="Invoice.lineItem.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:import.value[x].coding">
+      <path value="Invoice.lineItem.extension.value[x].coding" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:import.value[x].coding.system">
+      <path value="Invoice.lineItem.extension.value[x].coding.system" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:import.value[x].coding.code">
+      <path value="Invoice.lineItem.extension.value[x].coding.code" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:import_pzn">
+      <path value="Invoice.lineItem.extension" />
+      <sliceName value="import_pzn" />
+      <short value="PZN des Originals für Importe" />
+      <definition value="Das Feld muss gefüllt werden, wenn das Feld „Import“ den Wert „1“ oder „2“ beinhaltet. Anzugeben ist die PZN des Bezugsarzneimittels (Original). Es sind nur die Ziffern 0 bis 9 zulässig. &#xD;&#xA;Hinweis: Die in der 8-stelligen Pharmazentralnummer enthaltene Prüfziffer muss mit dem Modulo11-Verfahren konform sein" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import_PZN" />
+      </type>
+    </element>
+    <element id="Invoice.lineItem.extension:import_pzn.value[x]">
+      <path value="Invoice.lineItem.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:import_pzn.value[x].system">
+      <path value="Invoice.lineItem.extension.value[x].system" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:import_pzn.value[x].code">
+      <path value="Invoice.lineItem.extension.value[x].code" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:vatValue">
+      <path value="Invoice.lineItem.extension" />
+      <sliceName value="vatValue" />
+      <short value="Umsatzsteuer Betrag" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_VAT_VALUE" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:vatValue.value[x]">
+      <path value="Invoice.lineItem.extension.value[x]" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.extension:vatValue.value[x].value">
+      <path value="Invoice.lineItem.extension.value[x].value" />
+      <short value="Preisangabe in Euro" />
+    </element>
+    <element id="Invoice.lineItem.sequence">
+      <path value="Invoice.lineItem.sequence" />
+      <short value="Zähler Abrechnungszeile" />
+      <definition value="unique link to eAbgabedatensatz" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.chargeItem[x]">
+      <path value="Invoice.lineItem.chargeItem[x]" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+    </element>
+    <element id="Invoice.lineItem.chargeItem[x].coding">
+      <path value="Invoice.lineItem.chargeItem[x].coding" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element id="Invoice.lineItem.chargeItem[x].coding.system">
+      <path value="Invoice.lineItem.chargeItem[x].coding.system" />
+      <min value="1" />
+      <fixedUri value="http://terminology.hl7.org/CodeSystem/v3-NullFlavor" />
+    </element>
+    <element id="Invoice.lineItem.chargeItem[x].coding.version">
+      <path value="Invoice.lineItem.chargeItem[x].coding.version" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.lineItem.chargeItem[x].coding.code">
+      <path value="Invoice.lineItem.chargeItem[x].coding.code" />
+      <short value="un-encoded" />
+      <min value="1" />
+      <fixedCode value="UNC" />
+    </element>
+    <element id="Invoice.lineItem.chargeItem[x].coding.display">
+      <path value="Invoice.lineItem.chargeItem[x].coding.display" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.lineItem.chargeItem[x].coding.userSelected">
+      <path value="Invoice.lineItem.chargeItem[x].coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.lineItem.chargeItem[x].text">
+      <path value="Invoice.lineItem.chargeItem[x].text" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.lineItem.priceComponent">
+      <path value="Invoice.lineItem.priceComponent" />
+      <short value="Zu- und Abschläge" />
+    </element>
+    <element id="Invoice.lineItem.priceComponent.type">
+      <path value="Invoice.lineItem.priceComponent.type" />
+      <short value="surcharge | deduction" />
+      <definition value="Kennzeichen Zu- oder Abschlag.&#xD;&#xA;&#xD;&#xA;surcharge  = Zuschlag;&#xD;&#xA;deduction = Abschlag&#xD;&#xA;&#xD;&#xA;Das Kennzeichen Zu- oder Abschlag dient als zusätzliche Information zum Betrag, der ein negatives Vorzeichen (Abschlag) haben kann." />
+      <constraint>
+        <key value="surchargeOrDeduction" />
+        <severity value="error" />
+        <human value="Es sind nur die Kennzeichen &quot;surcharge&quot; (Zuschlag) oder &quot;deduction&quot; (Abschlag) zulässig." />
+        <expression value="matches('surcharge') or matches('deduction')" />
+        <source value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten" />
+      </constraint>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.priceComponent.code">
+      <path value="Invoice.lineItem.priceComponent.code" />
+      <short value="Zu-/Abschlag" />
+      <definition value="R001 = Apothekenabschlag nach § 130 SGB V; &#xD;&#xA;R003 = Sonstiger Abschlag/Rabatt; &#xD;&#xA;R004 = Gesetzlicher Herstellerabschlag nach § 130a Absatz 1 und Absatz 1a SGB V; &#xD;&#xA;R005 = Gesetzlicher Herstellerabschlag nach § 130a Absatz 3a SGB V; &#xD;&#xA;R006 = Gesetzlicher Herstellerabschlag nach § 130a Absatz 3b SGB V; &#xD;&#xA;R007 = Rabattangabe der vom Kostenträger aufgrund von Verträgen nach § 130a Abs. 8 i.V.m. § 31 Abs. 2 SGB V zusätzlich übernommenen Mehrkosten; &#xD;&#xA;R008 = Rabattangabe aufgrund von Verträgen nach § 130a Abs. 8 SGB V ohne Berücksichtigung der Rabattangaben nach Schlüssel R007; &#xD;&#xA;R009 = Gesetzlicher Herstellerabschlag nach § 130a Abs. 2 SGB V" />
+      <min value="1" />
+      <mustSupport value="true" />
+      <binding>
+        <strength value="required" />
+        <description value="Der Zu-/Abschlag-Code muss aus dem ValueSet 'GKVSV_VS_ERP_ZuAbschlagKey' gewählt werden." />
+        <valueSet value="https://fhir.gkvsv.de/ValueSet/GKVSV_VS_ERP_ZuAbschlagKey" />
+      </binding>
+    </element>
+    <element id="Invoice.lineItem.priceComponent.code.coding">
+      <path value="Invoice.lineItem.priceComponent.code.coding" />
+      <min value="1" />
+      <max value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.priceComponent.code.coding.system">
+      <path value="Invoice.lineItem.priceComponent.code.coding.system" />
+      <min value="1" />
+      <fixedUri value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_ZuAbschlagKey" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.priceComponent.code.coding.code">
+      <path value="Invoice.lineItem.priceComponent.code.coding.code" />
+      <short value="Zu-/Abschlag" />
+      <definition value="R001 = Apothekenabschlag nach § 130 SGB V; &#xD;&#xA;R003 = Sonstiger Abschlag/Rabatt; &#xD;&#xA;R004 = Gesetzlicher Herstellerabschlag nach § 130a Absatz 1 und Absatz 1a SGB V; &#xD;&#xA;R005 = Gesetzlicher Herstellerabschlag nach § 130a Absatz 3a SGB V; &#xD;&#xA;R006 = Gesetzlicher Herstellerabschlag nach § 130a Absatz 3b SGB V; &#xD;&#xA;R007 = Rabattangabe der vom Kostenträger aufgrund von Verträgen nach § 130a Abs. 8 i.V.m. § 31 Abs. 2 SGB V zusätzlich übernommenen Mehrkosten; &#xD;&#xA;R008 = Rabattangabe aufgrund von Verträgen nach § 130a Abs. 8 SGB V ohne Berücksichtigung der Rabattangaben nach Schlüssel R007; &#xD;&#xA;R009 = Gesetzlicher Herstellerabschlag nach § 130a Abs. 2 SGB V" />
+      <min value="1" />
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.priceComponent.code.coding.userSelected">
+      <path value="Invoice.lineItem.priceComponent.code.coding.userSelected" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.lineItem.priceComponent.code.text">
+      <path value="Invoice.lineItem.priceComponent.code.text" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.lineItem.priceComponent.factor">
+      <path value="Invoice.lineItem.priceComponent.factor" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.lineItem.priceComponent.amount">
+      <path value="Invoice.lineItem.priceComponent.amount" />
+      <short value="Betrag Zu-/Abschlag" />
+      <min value="1" />
+      <type>
+        <code value="Money" />
+        <profile value="http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-PreisangabeEUR" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="Invoice.lineItem.priceComponent.amount.value">
+      <path value="Invoice.lineItem.priceComponent.amount.value" />
+      <short value="Betrag Zu-/Abschlag" />
+    </element>
+    <element id="Invoice.totalPriceComponent">
+      <path value="Invoice.totalPriceComponent" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.totalNet">
+      <path value="Invoice.totalNet" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.totalGross">
+      <path value="Invoice.totalGross" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.paymentTerms">
+      <path value="Invoice.paymentTerms" />
+      <max value="0" />
+    </element>
+    <element id="Invoice.note">
+      <path value="Invoice.note" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>
