@@ -46,10 +46,6 @@ class EAbrechnungsdatenTest {
         eAbrechnungsdaten.setId(id);
         eAbrechnungsdaten.addIdentifier().setSystem("urn:mrns").setValue(id);
 
-        //eAbrechnungsdaten.setIrrlaeufer(true);
-        eAbrechnungsdaten.setImportKennzeichen(ImportKennzeichen.KEIN_BEZUGS_ARZNEI_MITTEL);
-
-
 
         final String s = parser.encodeResourceToString(eAbrechnungsdaten);
         System.out.println(s);

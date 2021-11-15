@@ -2,12 +2,13 @@ package de.gkvsv.fhir.ta7.model.extensions;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.IParser;
+import de.gkvsv.fhir.ta7.model.enums.ImportKennzeichenEnum.ImportKennzeichen;
 import de.gkvsv.fhir.ta7.model.enums.LeistungserbringerSitzEnum.LeistungserbringerSitz;
 import de.gkvsv.fhir.ta7.model.enums.LeistungserbringertypEnum.Leistungserbringertyp;
+import de.gkvsv.fhir.ta7.model.enums.PositionstypEnum.Positionstyp;
 import de.gkvsv.fhir.ta7.model.enums.ZuAbschlagKeyEnum.ZuAbschlagKey;
 import de.gkvsv.fhir.ta7.model.extensions.ZusatzDatenHerstellung.Einheit;
 import de.gkvsv.fhir.ta7.model.profiles.EAbrechnungsdaten;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import org.hl7.fhir.r4.model.Bundle;
@@ -29,7 +30,7 @@ class ZusatzDatenHerstellungTest {
 
     @BeforeEach
     void setUp() {
-        fhirContext.registerCustomType(ZusatzDatenHerstellung_Extension.class);
+        //fhirContext.registerCustomType(ZusatzDatenHerstellung.class);
         parser.setPrettyPrint(true);
     }
 
@@ -75,6 +76,7 @@ class ZusatzDatenHerstellungTest {
         pos2.getZuAbschlaegeZusatzdaten().setZuAbschlagKennzeichen(
             InvoicePriceComponentType.SURCHARGE);
 
+        // TODO einheit verstecken und addPosition zu eAbrechungsdaten hinzufügen
         einheit.getAbrechnungspositionen().add(pos2);
 
         // Identifier
@@ -86,6 +88,20 @@ class ZusatzDatenHerstellungTest {
         invoice.setLeistungserbringerTyp(Leistungserbringertyp.KRANKENHAUSAPOTHEKEN);
         invoice.setApothekenIK("90456789");
 
+        // Lineitem
+        InvoiceLineItem lineItem = new InvoiceLineItem();
+        lineItem.setPositionstyp(Positionstyp.UEBRIGE_POSITION);
+        lineItem.setVatValue(56.89);
+        lineItem.setImportKennzeichen(ImportKennzeichen.KEIN_BEZUGS_ARZNEI_MITTEL);
+        lineItem.setSequence(1);
+        // Zu- und Abschläge
+        lineItem.setZuAbschlagKennzeichen(InvoicePriceComponentType.SURCHARGE);
+        lineItem.setZuAbschlagCode(ZuAbschlagKey.GESETZLICHER_HERSTELLER_ABSCHLAG_P130a_A1_UND_A1a);
+        lineItem.setZuAbschlagBetrag(-1.77);
+
+        invoice.addLineItem(lineItem);
+
+        // TODO bundle erben und eine Sammelrechnung erstell mit addRechnuung(). statt alles hier platt zu erledigen
         // Sammel Bundle erstellen
         Bundle bundle = new Bundle();
 
