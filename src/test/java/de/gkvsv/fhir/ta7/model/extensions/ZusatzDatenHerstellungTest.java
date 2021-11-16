@@ -110,7 +110,7 @@ class ZusatzDatenHerstellungTest {
 
         BundleLinkComponent link = new BundleLinkComponent();
         link.setRelation("item");
-        link.setUrl("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten");
+        link.setUrl(EAbrechnungsdaten.LINK);
 
         // fill entry
         entryComponent.setLink(List.of(link));

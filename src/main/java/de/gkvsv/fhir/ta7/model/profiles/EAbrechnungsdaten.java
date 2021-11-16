@@ -19,6 +19,8 @@ import org.hl7.fhir.r4.model.Invoice;
 @ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten|1.0.4")
 public class EAbrechnungsdaten extends Invoice {
 
+    public static String LINK = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten";
+
     @Child(name = "irrlaeufer")
     @Extension(url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Irrlaeufer")
     private BooleanType irrlaeufer = new BooleanType(false);
