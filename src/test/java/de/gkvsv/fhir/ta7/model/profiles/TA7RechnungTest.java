@@ -1,10 +1,9 @@
 package de.gkvsv.fhir.ta7.model.profiles;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import ca.uhn.fhir.parser.IParser;
+import de.gkvsv.fhir.ta7.model.enums.RechnungsartEnum.Rechnungsart;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -35,7 +34,11 @@ class TA7RechnungTest {
         ta7Rechnung.setAbrechnungszeitraum(new Date());
         ta7Rechnung.getAbrechnungszeitraum().setPrecision(TemporalPrecisionEnum.DAY);
 
-        ta7Rechnung.setRefrenceRezeptBundle(UUID.randomUUID().toString());
+        ta7Rechnung.setRefrenceRezeptBundle(UUID.randomUUID().toString())
+            .setSammelrechnungsnummer("1234567890000000")
+            .setRechnungsart(Rechnungsart.ABRECHN_UEBER_AZ_DER_APO_UND_ZAHLUNG_UEBER_APO_IK_DURCH_KRA)
+            .setKostentraegerIK("123456789")
+            .setRechnungsdatum(new Date());
 
         // Sammel Bundle erstellen
         Bundle bundle = new Bundle();
