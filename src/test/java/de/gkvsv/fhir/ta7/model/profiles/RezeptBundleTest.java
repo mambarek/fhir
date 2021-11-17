@@ -24,16 +24,14 @@ class RezeptBundleTest {
 
     @Test
     void testCreate() {
-
         RezeptBundle rezeptBundle = new RezeptBundle();
-        rezeptBundle.setId(UUID.randomUUID().toString());
 
         rezeptBundle.getVerordnungsdaten().setContentAsBase64("VmVyb3JkbnVuZ3NkYXRlbiBCZWlzcGllbCBFcnN0ZWxsdW5nIEJlaXNwaWVsIGVBYnJlY2hudW5nc2RhdGVu");
         rezeptBundle.getQuittungsdaten().setContentAsBase64("VmVyb3JkbnVuZ3NkYXRlbiBCZWlzcGllbCBFcnN0ZWxsdW5nIEJlaXNwaWVsIGVBYnJlY2hudW5nc2RhdGVu");
         rezeptBundle.getAbgabedaten().setContentAsBase64("ZUFiZ2FiZWRhdGVuIEJlaXNwaWVsIEVyc3RlbGx1bmcgQmVpc3BpZWwgZUFicmVjaG51bmdzZGF0ZW4=");
 
         final EAbrechnungsdaten eAbrechnungsdaten = TA7Factory.createEAbrechnungsdaten();
-        rezeptBundle.getAbrechungsdaten().seteAbrechnungsdaten(eAbrechnungsdaten);
+        rezeptBundle.getAbrechungsdaten().setEAbrechnungsdaten(eAbrechnungsdaten);
         final String s = parser.encodeResourceToString(rezeptBundle);
         System.out.println(s);
     }

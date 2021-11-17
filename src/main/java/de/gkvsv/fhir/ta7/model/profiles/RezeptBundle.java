@@ -6,6 +6,7 @@ import de.gkvsv.fhir.ta7.model.extensions.Abgabedaten;
 import de.gkvsv.fhir.ta7.model.extensions.Abrechungsdaten;
 import de.gkvsv.fhir.ta7.model.extensions.Quittungsdaten;
 import de.gkvsv.fhir.ta7.model.extensions.Verordnungsdaten;
+import java.util.UUID;
 import org.hl7.fhir.r4.model.Bundle;
 
 /**
@@ -38,6 +39,7 @@ public class RezeptBundle extends Bundle {
      */
     public RezeptBundle() {
         setType(BundleType.COLLECTION);
+        setId(UUID.randomUUID().toString());
         init();
     }
 

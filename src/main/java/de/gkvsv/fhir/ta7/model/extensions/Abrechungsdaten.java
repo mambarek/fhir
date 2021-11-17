@@ -23,7 +23,7 @@ public class Abrechungsdaten extends BundleEntryComponent {
         getLinkFirstRep().setUrl("https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten");
     }
 
-    public Abrechungsdaten seteAbrechnungsdaten(EAbrechnungsdaten eAbrechnungsdaten) {
+    public Abrechungsdaten setEAbrechnungsdaten(EAbrechnungsdaten eAbrechnungsdaten) {
         this.eAbrechnungsdaten = eAbrechnungsdaten;
         setResource(this.eAbrechnungsdaten);
         setFullUrl("urn:uuid:" + getResource().getId());
