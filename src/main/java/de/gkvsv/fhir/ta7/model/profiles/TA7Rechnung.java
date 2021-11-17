@@ -12,6 +12,7 @@ import de.gkvsv.fhir.ta7.model.enums.RechnungsartEnum.RechnungsartFactory;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.UUID;
 import org.hl7.fhir.r4.model.BackboneElement;
 import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.Enumeration;
@@ -52,6 +53,7 @@ public class TA7Rechnung extends Invoice {
      */
     public TA7Rechnung() {
         setStatus(InvoiceStatus.ISSUED);
+        setId(UUID.randomUUID().toString());
     }
 
     @Override

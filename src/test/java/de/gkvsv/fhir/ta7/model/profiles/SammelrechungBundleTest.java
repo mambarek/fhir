@@ -1,22 +1,20 @@
 package de.gkvsv.fhir.ta7.model.profiles;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import ca.uhn.fhir.parser.IParser;
 import de.gkvsv.fhir.ta7.model.enums.RechnungsartEnum.Rechnungsart;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
-import org.hl7.fhir.r4.model.Bundle;
-import org.hl7.fhir.r4.model.Bundle.BundleEntryComponent;
-import org.hl7.fhir.r4.model.Bundle.BundleLinkComponent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * created by mmbarek on 16.11.2021.
+ * created by mmbarek on 17.11.2021.
  */
-class TA7RechnungTest {
+class SammelrechungBundleTest {
 
     FhirContext fhirContext = FhirContext.forR4();
     IParser parser = fhirContext.newXmlParser();
@@ -28,6 +26,11 @@ class TA7RechnungTest {
 
     @Test
     void testCreate() {
+        SammelrechungBundle bundle = new SammelrechungBundle();
+        bundle.setDateiname("Datei1")
+            .setDateinummer("10007");
+
+        // TA7 Rechnung
         TA7Rechnung ta7Rechnung = new TA7Rechnung();
         ta7Rechnung.setAbrechnungszeitraum(new Date());
         ta7Rechnung.getAbrechnungszeitraum().setPrecision(TemporalPrecisionEnum.DAY);
@@ -38,25 +41,26 @@ class TA7RechnungTest {
             .setKostentraegerIK("123456789")
             .setRechnungsdatum(new Date());
 
-        // Sammel Bundle erstellen
-        Bundle bundle = new Bundle();
-        // Entry für die eAbrechnung erstellen
-        BundleEntryComponent entryComponent = new BundleEntryComponent();
 
-        BundleLinkComponent link = new BundleLinkComponent();
-        link.setRelation("item");
-        link.setUrl(TA7Rechnung.LINK);
+        // SammelrechnungComposition
+        SammelrechnungComposition composition = new SammelrechnungComposition();
+        composition.setEmpfaengerIK("123456789")
+            .setKostentraegerIK("987654321")
+            .setAbrechnungszeitraum(new Date())
+            .setAbsenderIK("321456789")
+            .addSammelrechnungSection("8b83ed44-2438-49aa-8d80-895c00ae9883")
+            .addRechnungenSection(ta7Rechnung.getId());
 
-        // fill entry
-        entryComponent.setLink(List.of(link));
 
-        entryComponent.setFullUrl("urn:uuid:" + ta7Rechnung.getId());
-        entryComponent.setResource(ta7Rechnung);
+        // SammelrechnungList
+        SammelrechnungList list = new SammelrechnungList();
+        list.addReference("Bundle/" + bundle.getId());
 
-        // add entry to bundle
-        bundle.addEntry(entryComponent);
+        // build
+        bundle.addSammelrechungComposition(composition);
+        bundle.addSammelrechnungListCompostion(list);
+        bundle.addTa7Rechnung(ta7Rechnung);
 
-        // parse bundle to xml
         final String s = parser.encodeResourceToString(bundle);
         System.out.println(s);
     }
