@@ -7,6 +7,7 @@ import ca.uhn.fhir.util.ElementUtil;
 import de.gkvsv.fhir.ta7.model.enums.LeistungserbringerSitzEnum.LeistungserbringerSitz;
 import de.gkvsv.fhir.ta7.model.enums.LeistungserbringertypEnum.Leistungserbringertyp;
 import de.gkvsv.fhir.ta7.model.extensions.ZusatzDatenHerstellung;
+import java.util.UUID;
 import org.hl7.fhir.r4.model.BooleanType;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
@@ -16,7 +17,7 @@ import org.hl7.fhir.r4.model.Invoice;
 /**
  * created by mmbarek on 06.11.2021.
  */
-@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten|1.0.4")
+@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten|1.1.0")
 public class EAbrechnungsdaten extends Invoice {
 
     public static String LINK = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten";
@@ -39,6 +40,14 @@ public class EAbrechnungsdaten extends Invoice {
      * done throw this.addIdentifier(belegnummer) in the getter method;
      */
     private Identifier belegnummer;
+
+    /**
+     * status has fixed value ISSUED
+     */
+    public EAbrechnungsdaten() {
+        setId(UUID.randomUUID().toString());
+        setStatus(InvoiceStatus.ISSUED);
+    }
 
     @Override
     public boolean isEmpty() {

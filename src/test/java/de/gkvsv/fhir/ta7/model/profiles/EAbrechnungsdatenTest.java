@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.IParser;
-import de.gkvsv.fhir.ta7.model.enums.ImportKennzeichenEnum.ImportKennzeichen;
 import java.util.Date;
 import java.util.UUID;
 import org.hl7.fhir.r4.model.BooleanType;
@@ -154,5 +153,6 @@ class EAbrechnungsdatenTest {
         final String s = parser.encodeResourceToString(patient);
         System.out.println(s);
     }
+
 
 }

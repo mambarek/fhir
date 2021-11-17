@@ -3,6 +3,7 @@ package de.gkvsv.fhir.ta7.model.profiles;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import ca.uhn.fhir.model.api.annotation.Block;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Extension;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.util.ElementUtil;
@@ -19,9 +20,11 @@ import org.hl7.fhir.r4.model.Invoice;
 import org.hl7.fhir.r4.model.Reference;
 
 /**
+ * Rechnung an den Kostenträger
  * created by mmbarek on 06.11.2021.
  */
-@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung|1.0.4")
+@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung|1.1.0")
+@Description("Rechnung an den Kostenträger")
 public class TA7Rechnung extends Invoice {
 
     public static String LINK = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung";
