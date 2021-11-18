@@ -40,7 +40,7 @@ public class TA7Factory {
         abrechnungsposition.setZaehlerAbrechnungsposition(1);
 
         abrechnungsposition.getZuAbschlaegeZusatzdaten().setZuAbschlagCode(ZuAbschlagKey.APOTHEKEN_ABSCHLAG);
-        abrechnungsposition.getZuAbschlaegeZusatzdaten().setZuAbschlagBetrag(new Money().setValue(100.59));
+        abrechnungsposition.getZuAbschlaegeZusatzdaten().setZuAbschlagBetrag(100.59);
         abrechnungsposition.getZuAbschlaegeZusatzdaten().setZuAbschlagKennzeichen(
             InvoicePriceComponentType.DEDUCTION);
 

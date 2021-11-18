@@ -31,13 +31,17 @@ class TA7RechnungTest {
     void testCreate() {
         TA7Rechnung ta7Rechnung = new TA7Rechnung();
         ta7Rechnung.setAbrechnungszeitraum(new Date());
-        ta7Rechnung.getAbrechnungszeitraum().setPrecision(TemporalPrecisionEnum.DAY);
 
-        ta7Rechnung.setRefrenceRezeptBundle(UUID.randomUUID().toString())
+        // wird mit eine echte Refrenz ersetzt
+        String rezepBundleReference = UUID.randomUUID().toString();
+        String rezepBundleReference2 = UUID.randomUUID().toString();
+
+        ta7Rechnung.addRefrenceRezeptBundle(rezepBundleReference)
             .setSammelrechnungsnummer("1234567890000000")
             .setRechnungsart(Rechnungsart.ABRECHN_UEBER_AZ_DER_APO_UND_ZAHLUNG_UEBER_APO_IK_DURCH_KRA)
             .setKostentraegerIK("123456789")
-            .setRechnungsdatum(new Date());
+            .setRechnungsdatum(new Date())
+            .addRefrenceRezeptBundle(rezepBundleReference2);
 
         // Sammel Bundle erstellen
         Bundle bundle = new Bundle();

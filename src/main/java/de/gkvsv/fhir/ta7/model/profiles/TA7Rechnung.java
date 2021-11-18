@@ -11,7 +11,9 @@ import de.gkvsv.fhir.ta7.model.enums.RechnungsartEnum.Rechnungsart;
 import de.gkvsv.fhir.ta7.model.enums.RechnungsartEnum.RechnungsartFactory;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 import org.hl7.fhir.r4.model.BackboneElement;
 import org.hl7.fhir.r4.model.DateTimeType;
@@ -19,6 +21,7 @@ import org.hl7.fhir.r4.model.Enumeration;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Invoice;
 import org.hl7.fhir.r4.model.Reference;
+import org.hl7.fhir.r4.model.Resource;
 
 /**
  * Rechnung an den Kostenträger
@@ -54,6 +57,7 @@ public class TA7Rechnung extends Invoice {
     public TA7Rechnung() {
         setStatus(InvoiceStatus.ISSUED);
         setId(UUID.randomUUID().toString());
+        referenceRezeptBundle = new ReferenceRezeptBundle();
     }
 
     @Override
@@ -75,22 +79,13 @@ public class TA7Rechnung extends Invoice {
     public TA7Rechnung setAbrechnungszeitraum(Date date) {
         final DateTimeType dateTimeType = new DateTimeType();
         dateTimeType.setValue(date);
+        dateTimeType.setPrecision(TemporalPrecisionEnum.DAY);
         this.abrechnungszeitraum = dateTimeType;
         return this;
     }
 
-    public TA7Rechnung setAbrechnungszeitraum(LocalDateTime localDateTime) {
-        final DateTimeType dateTimeType = new DateTimeType();
-        dateTimeType.setValue(Timestamp.valueOf(localDateTime));
-        this.abrechnungszeitraum = dateTimeType;
-        return this;
-    }
-
-    public TA7Rechnung setRefrenceRezeptBundle(String reference) {
-        if(referenceRezeptBundle == null) {
-            referenceRezeptBundle = new ReferenceRezeptBundle();
-        }
-        referenceRezeptBundle.getLineItem().setReference(reference);
+    public TA7Rechnung addRefrenceRezeptBundle(String reference) {
+        referenceRezeptBundle.addReference(reference);
         return this;
     }
 
@@ -101,11 +96,6 @@ public class TA7Rechnung extends Invoice {
             this.addIdentifier(sammelrechnungsnummer);
         }
         return sammelrechnungsnummer;
-    }
-
-    public TA7Rechnung setSammelrechnungsnummer(Identifier sammelrechnungsnummer) {
-        this.sammelrechnungsnummer = sammelrechnungsnummer;
-        return this;
     }
 
     public TA7Rechnung setSammelrechnungsnummer(String rechnungsNummer) {
@@ -161,29 +151,35 @@ public class TA7Rechnung extends Invoice {
 
         @Child(name = "lineItem")
         @Extension(url = "lineItem")
-        private Reference lineItem;
+        private List<Reference> lineItems;
 
-        public Reference getLineItem() {
-            if(lineItem == null){
-                lineItem = new Reference();
+        public List<Reference> getLineItems() {
+            if(lineItems == null){
+                lineItems = new ArrayList<>();
             }
-            return lineItem;
+            return lineItems;
         }
 
-        public void setLineItem(Reference lineItem) {
-            this.lineItem = lineItem;
+        public void setLineItems(List<Reference> lineItems) {
+            this.lineItems = lineItems;
         }
 
         @Override
         public BackboneElement copy() {
             ReferenceRezeptBundle copy = new ReferenceRezeptBundle();
-            copy.setLineItem(lineItem);
+            copy.setLineItems(lineItems);
             return null;
         }
 
         @Override
         public boolean isEmpty() {
-            return super.isEmpty() && ElementUtil.isEmpty(lineItem);
+            return super.isEmpty() && ElementUtil.isEmpty(lineItems);
+        }
+
+        public void addReference(String reference) {
+            Reference ref = new Reference();
+            ref.setReference(reference);
+            getLineItems().add(ref);
         }
     }
 }

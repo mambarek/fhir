@@ -115,24 +115,7 @@ class EAbrechnungsdatenTest {
         final String bundleString = parser.encodeResourceToString(ta7Bundle);
 
         System.out.println(bundleString);
-
     }
-
-    @Test
-    public void testParseResource() {
-        String rawString = "<EAbrechnungsdaten xmlns=\"http://hl7.org/fhir\">\n"
-            + "   <meta>\n"
-            + "      <profile value=\"https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten\"></profile>\n"
-            + "   </meta>\n"
-            + "   <importKennzeichen value=\"3\"></importKennzeichen>\n"
-            + "</EAbrechnungsdaten>";
-
-        final EAbrechnungsdaten eAbrechnungsdaten = parser.parseResource(EAbrechnungsdaten.class,
-            rawString);
-
-        assertNotNull(eAbrechnungsdaten);
-    }
-
 
     @Test
     public void testEnum() {
