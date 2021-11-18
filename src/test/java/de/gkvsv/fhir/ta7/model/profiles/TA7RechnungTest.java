@@ -3,6 +3,7 @@ package de.gkvsv.fhir.ta7.model.profiles;
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import ca.uhn.fhir.parser.IParser;
+import de.gkvsv.fhir.ta7.config.Configuration;
 import de.gkvsv.fhir.ta7.model.enums.RechnungsartEnum.Rechnungsart;
 import java.util.Date;
 import java.util.List;
@@ -50,7 +51,7 @@ class TA7RechnungTest {
         // fill entry
         entryComponent.setLink(List.of(link));
 
-        entryComponent.setFullUrl("urn:uuid:" + ta7Rechnung.getId());
+        entryComponent.setFullUrl(Configuration.URN_URL_PREFIX + ta7Rechnung.getId());
         entryComponent.setResource(ta7Rechnung);
 
         // add entry to bundle

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.IParser;
+import de.gkvsv.fhir.ta7.config.Configuration;
 import java.util.Date;
 import java.util.UUID;
 import org.hl7.fhir.r4.model.BooleanType;
@@ -39,12 +40,10 @@ class EAbrechnungsdatenTest {
 
     @Test
     public void testEAbrechnungsdaten() {
-
         EAbrechnungsdaten eAbrechnungsdaten = new EAbrechnungsdaten();
         final String id = UUID.randomUUID().toString();
         eAbrechnungsdaten.setId(id);
         eAbrechnungsdaten.addIdentifier().setSystem("urn:mrns").setValue(id);
-
 
         final String s = parser.encodeResourceToString(eAbrechnungsdaten);
         System.out.println(s);
@@ -108,7 +107,7 @@ class EAbrechnungsdatenTest {
         BundleEntryComponent entryComponent = new BundleEntryComponent();
         entryComponent.setResource(invoice);
 
-        entryComponent.setFullUrl("urn:uuid:" + rechnungId);
+        entryComponent.setFullUrl(Configuration.URN_URL_PREFIX + rechnungId);
 
         ta7Bundle.addEntry(entryComponent);
         // --------------------------- END Rechnung ----------------------------------------------

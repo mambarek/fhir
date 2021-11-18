@@ -5,6 +5,7 @@ import ca.uhn.fhir.model.api.annotation.Child;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Extension;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
+import de.gkvsv.fhir.ta7.config.Configuration;
 import de.gkvsv.fhir.ta7.model.enums.TA7Enum.TA7;
 import java.util.Date;
 import java.util.UUID;
@@ -102,11 +103,11 @@ public class SammelrechnungComposition extends Composition {
      * @return
      */
     public SammelrechnungComposition addSammelrechnungSection(String sammelrechungId) {
-
         if(sammelrechungSection == null) {
             initSammelrechnungSection();
         }
-        sammelrechungSection.getEntryFirstRep().setReference("urn:uuid:" + sammelrechungId);
+        sammelrechungSection.getEntryFirstRep()
+            .setReference(Configuration.URN_URL_PREFIX + sammelrechungId);
         return this;
     }
 
@@ -118,12 +119,12 @@ public class SammelrechnungComposition extends Composition {
             .setDisplay(TA7.LSR.getDisplay());
     }
 
-    public SammelrechnungComposition addRechnungenSection(String rechungId) {
+    public SammelrechnungComposition addRechnungToRechnungenSection(String rechungId) {
         if(rechungenSection == null) {
             initRechnungenSection();
         }
         Reference idRef = new Reference();
-        idRef.setReference("urn:uuid:" + rechungId);
+        idRef.setReference(Configuration.URN_URL_PREFIX + rechungId);
         rechungenSection.getEntry().add(idRef);
         return this;
     }

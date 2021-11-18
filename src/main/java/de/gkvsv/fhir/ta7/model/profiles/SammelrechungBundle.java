@@ -2,6 +2,7 @@ package de.gkvsv.fhir.ta7.model.profiles;
 
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
+import de.gkvsv.fhir.ta7.config.Configuration;
 import java.util.Date;
 import java.util.UUID;
 import org.hl7.fhir.r4.model.Bundle;
@@ -51,7 +52,7 @@ public class SammelrechungBundle extends Bundle {
 
     public SammelrechungBundle addTa7Rechnung(TA7Rechnung ta7Rechnung) {
         addEntry().setResource(ta7Rechnung)
-            .setFullUrl("urn:uuid:" + ta7Rechnung.getId());
+            .setFullUrl(Configuration.URN_URL_PREFIX + ta7Rechnung.getId());
         return this;
     }
 
@@ -60,7 +61,7 @@ public class SammelrechungBundle extends Bundle {
             sammelrechungCompositionEntryComponent = addEntry();
         }
         sammelrechungCompositionEntryComponent.setResource(composition)
-            .setFullUrl("urn:uuid:" + composition.getId());
+            .setFullUrl(Configuration.URN_URL_PREFIX + composition.getId());
         return this;
     }
 
@@ -69,8 +70,14 @@ public class SammelrechungBundle extends Bundle {
             sammelrechnungListEntryComponent = addEntry();
         }
         sammelrechnungListEntryComponent.setResource(list)
-            .setFullUrl("urn:uuid:" + list.getId());
+            .setFullUrl(Configuration.URN_URL_PREFIX + list.getId());
 
+        return this;
+    }
+
+    public SammelrechungBundle addRezeptBundle(RezeptBundle rezeptBundle) {
+        addEntry().setResource(rezeptBundle)
+            .setFullUrl(Configuration.URN_URL_PREFIX + rezeptBundle.getId());
         return this;
     }
 }

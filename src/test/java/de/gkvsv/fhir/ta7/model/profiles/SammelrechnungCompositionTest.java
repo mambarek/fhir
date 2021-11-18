@@ -27,7 +27,7 @@ class SammelrechnungCompositionTest {
             .setAbrechnungszeitraum(new Date())
             .setAbsenderIK("321456789")
             .addSammelrechnungSection("8b83ed44-2438-49aa-8d80-895c00ae9883")
-            .addRechnungenSection("a9423218-80b5-4e49-9b4e-89dcb3536bc2");
+            .addRechnungToRechnungenSection("a9423218-80b5-4e49-9b4e-89dcb3536bc2");
 
         // parse composition to xml
         final String s = parser.encodeResourceToString(composition);

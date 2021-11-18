@@ -1,6 +1,7 @@
 package de.gkvsv.fhir.ta7.model.extensions;
 
 import ca.uhn.fhir.model.api.annotation.Block;
+import de.gkvsv.fhir.ta7.config.Configuration;
 import de.gkvsv.fhir.ta7.model.profiles.ErxBinary;
 import java.util.UUID;
 import org.hl7.fhir.r4.model.Bundle.BundleEntryComponent;
@@ -32,7 +33,7 @@ public class Verordnungsdaten extends BundleEntryComponent {
 
         setResource(erxBinary);
         getResource().setId(UUID.randomUUID().toString());
-        setFullUrl("urn:uuid:" + getResource().getId());
+        setFullUrl(Configuration.URN_URL_PREFIX + getResource().getId());
     }
 
     public Verordnungsdaten setContentAsBase64(String base64String) {

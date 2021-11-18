@@ -1,6 +1,7 @@
 package de.gkvsv.fhir.ta7.model.extensions;
 
 import ca.uhn.fhir.model.api.annotation.Block;
+import de.gkvsv.fhir.ta7.config.Configuration;
 import de.gkvsv.fhir.ta7.model.profiles.EAbrechnungsdaten;
 import de.gkvsv.fhir.ta7.model.profiles.ErxBinary;
 import java.util.UUID;
@@ -26,7 +27,7 @@ public class Abrechungsdaten extends BundleEntryComponent {
     public Abrechungsdaten setEAbrechnungsdaten(EAbrechnungsdaten eAbrechnungsdaten) {
         this.eAbrechnungsdaten = eAbrechnungsdaten;
         setResource(this.eAbrechnungsdaten);
-        setFullUrl("urn:uuid:" + getResource().getId());
+        setFullUrl(Configuration.URN_URL_PREFIX + getResource().getId());
         return this;
     }
 }

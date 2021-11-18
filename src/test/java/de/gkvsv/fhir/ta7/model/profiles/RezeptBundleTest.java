@@ -32,6 +32,7 @@ class RezeptBundleTest {
 
         final EAbrechnungsdaten eAbrechnungsdaten = TA7Factory.createEAbrechnungsdaten();
         rezeptBundle.getAbrechungsdaten().setEAbrechnungsdaten(eAbrechnungsdaten);
+
         final String s = parser.encodeResourceToString(rezeptBundle);
         System.out.println(s);
     }

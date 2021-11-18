@@ -2,6 +2,7 @@ package de.gkvsv.fhir.ta7.model.extensions;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.IParser;
+import de.gkvsv.fhir.ta7.config.Configuration;
 import de.gkvsv.fhir.ta7.model.profiles.EAbrechnungsdaten;
 import de.gkvsv.fhir.ta7.model.util.TA7Factory;
 import java.util.List;
@@ -42,7 +43,7 @@ class ZusatzDatenHerstellungTest {
 
         // fill entry
         entryComponent.setLink(List.of(link));
-        entryComponent.setFullUrl("urn:uuid:" + eAbrechnungsdaten.getId());
+        entryComponent.setFullUrl(Configuration.URN_URL_PREFIX + eAbrechnungsdaten.getId());
         entryComponent.setResource(eAbrechnungsdaten);
 
         // add entry to bundle
