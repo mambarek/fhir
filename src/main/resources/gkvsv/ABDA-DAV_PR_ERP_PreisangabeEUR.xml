@@ -1,0 +1,37 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="DAV-PR-ERP-PreisangabeEUR" />
+  <url value="http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-PreisangabeEUR" />
+  <version value="1.0.2" />
+  <name value="DAV_PR_ERP_PreisangabeEUR" />
+  <title value="DAV_PR_ERP_PreisangabeEUR" />
+  <status value="active" />
+  <date value="2021-04-20" />
+  <fhirVersion value="4.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <type value="Money" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Money" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Money">
+      <path value="Money" />
+      <short value="Preisangabe in Euro" />
+    </element>
+    <element id="Money.value">
+      <path value="Money.value" />
+      <min value="1" />
+      <constraint>
+        <key value="Preisangabe-1" />
+        <severity value="error" />
+        <human value="Begrenzung auf zwei Nachkommastellen" />
+        <expression value="toString().matches(&#39;^(-\\d{1,8}|\\d{1,9})\\.\\d{2}$&#39;)" />
+        <source value="http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-PreisangabeEUR" />
+      </constraint>
+    </element>
+    <element id="Money.currency">
+      <path value="Money.currency" />
+      <min value="1" />
+      <fixedCode value="EUR" />
+    </element>
+  </differential>
+</StructureDefinition>
