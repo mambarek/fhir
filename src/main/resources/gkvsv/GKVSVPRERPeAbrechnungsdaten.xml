@@ -27,7 +27,7 @@
       <path value="Invoice.meta.profile" />
       <min value="1" />
       <max value="1" />
-      <fixedCanonical value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten" />
+      <fixedCanonical value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten|1.1.0" />
       <mustSupport value="true" />
     </element>
     <element id="Invoice.implicitRules">
