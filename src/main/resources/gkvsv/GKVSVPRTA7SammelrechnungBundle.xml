@@ -28,7 +28,7 @@
       <path value="Bundle.meta.profile" />
       <min value="1" />
       <max value="1" />
-      <fixedCanonical value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle|1.1.0" />
+      <fixedCanonical value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle" />
       <mustSupport value="true" />
     </element>
     <element id="Bundle.implicitRules">
@@ -166,7 +166,7 @@
       <min value="1" />
       <type>
         <code value="Resource" />
-        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Composition|1.1.0" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Composition" />
       </type>
       <mustSupport value="true" />
     </element>
@@ -203,7 +203,7 @@
       <min value="1" />
       <type>
         <code value="Resource" />
-        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_List|1.1.0" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_List" />
       </type>
       <mustSupport value="true" />
     </element>
@@ -239,7 +239,7 @@
       <min value="1" />
       <type>
         <code value="Resource" />
-        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung|1.1.0" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung" />
       </type>
       <mustSupport value="true" />
     </element>
@@ -275,7 +275,7 @@
       <min value="1" />
       <type>
         <code value="Resource" />
-        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_RezeptBundle|1.1.0" />
+        <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_RezeptBundle" />
       </type>
       <mustSupport value="true" />
     </element>
