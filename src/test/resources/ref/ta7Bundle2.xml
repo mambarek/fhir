@@ -1,7 +1,7 @@
 <Bundle xmlns="http://hl7.org/fhir">
-  <id value="f9adfb1b-7022-43d6-80a2-bd8ec1d074c3"></id>
+  <id value="85640a46-f7c3-41c6-9098-df85292b2cae"></id>
   <meta>
-    <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle"></profile>
+    <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle|1.1.0"></profile>
   </meta>
   <identifier>
     <extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_TA7_Dateinummer">
@@ -11,14 +11,14 @@
     <value value="APO45607"></value>
   </identifier>
   <type value="document"></type>
-  <timestamp value="2021-11-20T21:40:07.015+01:00"></timestamp>
+  <timestamp value="2021-11-19T09:51:14.409+01:00"></timestamp>
   <entry>
-    <fullUrl value="urn:uuid:261ff343-fe79-4dc6-8658-c9720ba004d2"></fullUrl>
+    <fullUrl value="61d18d37-d163-4ab0-a4fa-d2b9197be439"></fullUrl>
     <resource>
       <Composition xmlns="http://hl7.org/fhir">
-        <id value="261ff343-fe79-4dc6-8658-c9720ba004d2"></id>
+        <id value="61d18d37-d163-4ab0-a4fa-d2b9197be439"></id>
         <meta>
-          <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Composition"></profile>
+          <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Composition|1.1.0"></profile>
         </meta>
         <extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_TA7_IK_Empfaenger">
           <valueIdentifier>
@@ -40,7 +40,7 @@
             <display value="Sammelrechnung"></display>
           </coding>
         </type>
-        <date value="2021-11-20"></date>
+        <date value="2021-11-19"></date>
         <author>
           <identifier>
             <system value="http://fhir.de/NamingSystem/arge-ik/iknr"></system>
@@ -57,7 +57,7 @@
             </coding>
           </code>
           <entry>
-            <reference value="urn:uuid:f26ad55d-3432-4e7c-acb4-14238d42b086"></reference>
+            <reference value="a372af1c-4fe4-496c-a1b3-c7b003eca767"></reference>
           </entry>
         </section>
         <section>
@@ -69,45 +69,45 @@
             </coding>
           </code>
           <entry>
-            <reference value="urn:uuid:6b682333-af87-4577-81ce-21aec335b9d0"></reference>
+            <reference value="c5e0de89-a9fc-4ace-b7dd-977750b897d6"></reference>
           </entry>
         </section>
       </Composition>
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:f26ad55d-3432-4e7c-acb4-14238d42b086"></fullUrl>
+    <fullUrl value="a372af1c-4fe4-496c-a1b3-c7b003eca767"></fullUrl>
     <resource>
       <List xmlns="http://hl7.org/fhir">
-        <id value="f26ad55d-3432-4e7c-acb4-14238d42b086"></id>
+        <id value="a372af1c-4fe4-496c-a1b3-c7b003eca767"></id>
         <meta>
-          <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_List"></profile>
+          <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_List|1.1.0"></profile>
         </meta>
         <status value="current"></status>
         <mode value="working"></mode>
         <entry>
           <item>
-            <reference value="Bundle/f9adfb1b-7022-43d6-80a2-bd8ec1d074c3"></reference>
+            <reference value="Bundle/85640a46-f7c3-41c6-9098-df85292b2cae"></reference>
           </item>
         </entry>
       </List>
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:6b682333-af87-4577-81ce-21aec335b9d0"></fullUrl>
+    <fullUrl value="c5e0de89-a9fc-4ace-b7dd-977750b897d6"></fullUrl>
     <resource>
       <Invoice xmlns="http://hl7.org/fhir">
-        <id value="6b682333-af87-4577-81ce-21aec335b9d0"></id>
+        <id value="c5e0de89-a9fc-4ace-b7dd-977750b897d6"></id>
         <meta>
-          <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung"></profile>
+          <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung|1.1.0"></profile>
         </meta>
         <extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_TA7_Abrechnungszeitraum">
-          <valueDateTime value="2021-11-20"></valueDateTime>
+          <valueDateTime value="2021-11-19"></valueDateTime>
         </extension>
         <extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_RezeptBundleReferenz">
           <extension url="lineItem">
             <valueReference>
-              <reference value="urn:uuid:07505eef-cb88-42a3-965b-274cc8a0e511"></reference>
+              <reference value="3b13ee8d-6392-4836-a062-2247770fe78b"></reference>
             </valueReference>
           </extension>
         </extension>
@@ -128,17 +128,17 @@
             <value value="123456789"></value>
           </identifier>
         </recipient>
-        <date value="2021-11-20"></date>
+        <date value="2021-11-19"></date>
       </Invoice>
     </resource>
   </entry>
   <entry>
-    <fullUrl value="urn:uuid:07505eef-cb88-42a3-965b-274cc8a0e511"></fullUrl>
+    <fullUrl value="3b13ee8d-6392-4836-a062-2247770fe78b"></fullUrl>
     <resource>
       <Bundle xmlns="http://hl7.org/fhir">
-        <id value="07505eef-cb88-42a3-965b-274cc8a0e511"></id>
+        <id value="3b13ee8d-6392-4836-a062-2247770fe78b"></id>
         <meta>
-          <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_RezeptBundle"></profile>
+          <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_RezeptBundle|1.1.0"></profile>
         </meta>
         <type value="collection"></type>
         <entry>
@@ -146,10 +146,10 @@
             <relation value="item"></relation>
             <url value="https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle"></url>
           </link>
-          <fullUrl value="urn:uuid:03120079-559e-4f87-abd6-a2c75539a795"></fullUrl>
+          <fullUrl value="53a78a66-80ec-4923-8884-8caa7ee65026"></fullUrl>
           <resource>
             <Binary xmlns="http://hl7.org/fhir">
-              <id value="03120079-559e-4f87-abd6-a2c75539a795"></id>
+              <id value="53a78a66-80ec-4923-8884-8caa7ee65026"></id>
               <meta>
                 <profile value="https://gematik.de/fhir/StructureDefinition/ErxBinary"></profile>
               </meta>
@@ -163,10 +163,10 @@
             <relation value="item"></relation>
             <url value="https://gematik.de/fhir/StructureDefinition/ErxReceipt"></url>
           </link>
-          <fullUrl value="urn:uuid:dbb24484-e01f-469b-8cbb-d3d6c7061789"></fullUrl>
+          <fullUrl value="ef99f877-9751-4385-a7cb-f8c4878965ad"></fullUrl>
           <resource>
             <Binary xmlns="http://hl7.org/fhir">
-              <id value="dbb24484-e01f-469b-8cbb-d3d6c7061789"></id>
+              <id value="ef99f877-9751-4385-a7cb-f8c4878965ad"></id>
               <meta>
                 <profile value="https://gematik.de/fhir/StructureDefinition/ErxBinary"></profile>
               </meta>
@@ -180,10 +180,10 @@
             <relation value="item"></relation>
             <url value="http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle"></url>
           </link>
-          <fullUrl value="urn:uuid:daa71c40-bbe3-40b9-97fe-df47a314de96"></fullUrl>
+          <fullUrl value="32ba1d5d-0e19-4cdc-93ff-03ce1a7302dc"></fullUrl>
           <resource>
             <Binary xmlns="http://hl7.org/fhir">
-              <id value="daa71c40-bbe3-40b9-97fe-df47a314de96"></id>
+              <id value="32ba1d5d-0e19-4cdc-93ff-03ce1a7302dc"></id>
               <meta>
                 <profile value="https://gematik.de/fhir/StructureDefinition/ErxBinary"></profile>
               </meta>
@@ -197,12 +197,12 @@
             <relation value="item"></relation>
             <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten"></url>
           </link>
-          <fullUrl value="urn:uuid:d651e96f-0b94-45dd-8aff-d6d8a8f4330d"></fullUrl>
+          <fullUrl value="6c5d67f6-b188-42e9-b6ac-b16ad376341d"></fullUrl>
           <resource>
             <Invoice xmlns="http://hl7.org/fhir">
-              <id value="d651e96f-0b94-45dd-8aff-d6d8a8f4330d"></id>
+              <id value="6c5d67f6-b188-42e9-b6ac-b16ad376341d"></id>
               <meta>
-                <targetProfile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten"></targetProfile>
+                <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten|1.1.0"></profile>
               </meta>
               <extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Irrlaeufer">
                 <valueBoolean value="true"></valueBoolean>
@@ -223,7 +223,7 @@
                       <extension url="zuAbschlagCode">
                         <valueCodeableConcept>
                           <coding>
-                            <system value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_ZuAbschlagKey"></system>
+                            <system value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Verwurf"></system>
                             <code value="R001"></code>
                           </coding>
                         </valueCodeableConcept>
@@ -247,7 +247,7 @@
                       <extension url="zuAbschlagCode">
                         <valueCodeableConcept>
                           <coding>
-                            <system value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_ZuAbschlagKey"></system>
+                            <system value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Verwurf"></system>
                             <code value="R004"></code>
                           </coding>
                         </valueCodeableConcept>

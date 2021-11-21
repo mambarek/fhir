@@ -2,7 +2,7 @@
   <id value="d6924e8b-54ea-47ae-82a9-2f69f4c59094"></id>
   <meta>
     <profile
-      value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten|1.0.4"></profile>
+      value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten|1.1.0"></profile>
   </meta>
   <extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Irrlaeufer">
     <valueBoolean value="false"></valueBoolean>

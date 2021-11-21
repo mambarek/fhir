@@ -58,9 +58,11 @@ public class TA7FhirResourcesTest {
         // Create a PrePopulatedValidationSupport which can be used to load custom definitions.
         PrePopulatedValidationSupport prePopulatedSupport = new PrePopulatedValidationSupport(fhirContext);
 
-        try (Stream<Path> stream = Files.list(Paths.get("src/main/resources/packages/eabrechnung"))) {
+        //try (Stream<Path> stream = Files.list(Paths.get("src/main/resources/packages/eabrechnung"))) {
+        //try (Stream<Path> stream = Files.list(Paths.get("E:/development/FHIR/xml"))) {
+        try (Stream<Path> stream = Files.list(Paths.get("src/main/resources/gkvsv"))) {
             stream.forEach(path -> {
-                log.debug("Add GKSV packages. parse file: " + path.toFile());
+                log.info("Add GKSV packages. parse file: " + path.toFile());
                 try {
                     final String resourceXML = Files.readString(path, StandardCharsets.UTF_8);
                     final IBaseResource resource = parser.parseResource(resourceXML);
@@ -152,21 +154,4 @@ public class TA7FhirResourcesTest {
 
     }
 
-    @Test
-    public void testLoadPackages() throws IOException {
-        try (InputStream fis = ClasspathUtil.loadResourceAsStream("classpath:packages/erezeptabrechnungsdaten.zip");
-            BufferedInputStream bis = new BufferedInputStream(fis);
-            ZipInputStream zis = new ZipInputStream(bis)) {
-            ZipEntry ze;
-
-            Long MILLS_IN_DAY = 86400000L;
-
-            while ((ze = zis.getNextEntry()) != null) {
-
-                System.out.format("File: %s Size: %d Last Modified %s %n",
-                    ze.getName(), ze.getSize(),
-                    LocalDate.ofEpochDay(ze.getTime() / MILLS_IN_DAY));
-            }
-        }
-    }
 }

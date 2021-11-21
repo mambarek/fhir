@@ -35,10 +35,13 @@ public class TA7Factory {
         eAbrechnungsdaten.setZusatzDatenHerstellung(zusatzDatenHerstellung);
         eAbrechnungsdaten.setIrrlaeufer(true);
 
+        // Abrechnungsposition -> Leistung
+        // Schleife über die Leistungen vom Rezept
         // Abrechungsposition erstellen
         Abrechnungsposition abrechnungsposition = new Abrechnungsposition();
         abrechnungsposition.setZaehlerAbrechnungsposition(1);
 
+        // hole daten aus db
         abrechnungsposition.getZuAbschlaegeZusatzdaten().setZuAbschlagCode(ZuAbschlagKey.APOTHEKEN_ABSCHLAG);
         abrechnungsposition.getZuAbschlaegeZusatzdaten().setZuAbschlagBetrag(100.59);
         abrechnungsposition.getZuAbschlaegeZusatzdaten().setZuAbschlagKennzeichen(
@@ -58,6 +61,10 @@ public class TA7Factory {
         // TODO einheit verstecken und addPosition zu eAbrechungsdaten hinzufügen
         einheit.getAbrechnungspositionen().add(pos2);
 
+        /**
+         * Picnr 1030000002,11030000004,11030000003
+         * select erezeptid as prescriptionid, picnr as belegnr from rez_apo where picnr=1030000002
+         */
         // Identifier
         eAbrechnungsdaten.setPrescriptionId("160.100.000.000.021.76");
         eAbrechnungsdaten.setBelegnummer("2105000000713456789");
