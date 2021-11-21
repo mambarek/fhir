@@ -9,8 +9,6 @@ import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.util.ElementUtil;
 import de.gkvsv.fhir.ta7.model.enums.RechnungsartEnum.Rechnungsart;
 import de.gkvsv.fhir.ta7.model.enums.RechnungsartEnum.RechnungsartFactory;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,13 +19,12 @@ import org.hl7.fhir.r4.model.Enumeration;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.Invoice;
 import org.hl7.fhir.r4.model.Reference;
-import org.hl7.fhir.r4.model.Resource;
 
 /**
  * Rechnung an den Kostenträger
  * created by mmbarek on 06.11.2021.
  */
-@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung|1.1.0")
+@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Rechnung")
 @Description("Rechnung an den Kostenträger")
 public class TA7Rechnung extends Invoice {
 
@@ -84,8 +81,8 @@ public class TA7Rechnung extends Invoice {
         return this;
     }
 
-    public TA7Rechnung addRefrenceRezeptBundle(String reference) {
-        referenceRezeptBundle.addReference(reference);
+    public TA7Rechnung addRefrenceRezeptBundle(String rezeptBundleReference) {
+        referenceRezeptBundle.addRezeptBundleReference(rezeptBundleReference);
         return this;
     }
 
@@ -168,7 +165,7 @@ public class TA7Rechnung extends Invoice {
         public BackboneElement copy() {
             ReferenceRezeptBundle copy = new ReferenceRezeptBundle();
             copy.setLineItems(lineItems);
-            return null;
+            return copy;
         }
 
         @Override
@@ -176,9 +173,9 @@ public class TA7Rechnung extends Invoice {
             return super.isEmpty() && ElementUtil.isEmpty(lineItems);
         }
 
-        public void addReference(String reference) {
+        public void addRezeptBundleReference(String reference) {
             Reference ref = new Reference();
-            ref.setReference(reference);
+            ref.setReference("Bundle/" + reference);
             getLineItems().add(ref);
         }
     }

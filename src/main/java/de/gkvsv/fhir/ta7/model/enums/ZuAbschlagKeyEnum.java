@@ -11,6 +11,8 @@ import org.hl7.fhir.r4.model.EnumFactory;
  */
 public class ZuAbschlagKeyEnum {
 
+    public static String SYSTEM_URL = "https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_ZuAbschlagKey";
+
     public enum ZuAbschlagKey implements IFhirEnum {
 
         /**
@@ -99,7 +101,7 @@ public class ZuAbschlagKeyEnum {
 
         @Override
         public String getSystem() {
-            return "https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Verwurf";
+            return SYSTEM_URL;
         }
 
         @Override

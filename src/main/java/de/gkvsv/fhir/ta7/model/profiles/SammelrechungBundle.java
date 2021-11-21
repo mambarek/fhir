@@ -12,7 +12,7 @@ import org.hl7.fhir.r4.model.StringType;
  * TA7 Sammelrechnung aus Datei - Bundle
  * created by mmbarek on 06.11.2021.
  */
-@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle|1.1.0")
+@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle")
 @Description("TA7 Sammelrechnung aus Datei - Bundle")
 public class SammelrechungBundle extends Bundle {
 
@@ -69,6 +69,7 @@ public class SammelrechungBundle extends Bundle {
         if(sammelrechnungListEntryComponent == null) {
             sammelrechnungListEntryComponent = addEntry();
         }
+        list.addReference("Bundle/" + getId());
         sammelrechnungListEntryComponent.setResource(list)
             .setFullUrl(Configuration.URN_URL_PREFIX + list.getId());
 

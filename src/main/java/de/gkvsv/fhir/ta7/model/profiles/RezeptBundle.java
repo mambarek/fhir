@@ -13,7 +13,7 @@ import org.hl7.fhir.r4.model.Bundle;
  * Dieses Bundle verbindet die eRezept Verordnungsdaten, Quittungsdaten, Abgabedaten und Abrechnungsdaten
  * created by mmbarek on 06.11.2021.
  */
-@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_RezeptBundle|1.1.0")
+@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_RezeptBundle")
 @Description("Dieses Bundle verbindet die eRezept Verordnungsdaten, Quittungsdaten, Abgabedaten und Abrechnungsdaten")
 public class RezeptBundle extends Bundle {
 

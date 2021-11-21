@@ -17,7 +17,7 @@ import org.hl7.fhir.r4.model.Reference;
  * TA7 Sammelrechnung - Composition
  * created by mmbarek on 06.11.2021.
  */
-@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Composition|1.1.0")
+@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Composition")
 @Description("TA7 Sammelrechnung - Composition")
 public class SammelrechnungComposition extends Composition {
 

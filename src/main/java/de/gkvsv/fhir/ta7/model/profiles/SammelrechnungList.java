@@ -7,7 +7,7 @@ import org.hl7.fhir.r4.model.ListResource;
 /**
  * created by mmbarek on 06.11.2021.
  */
-@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_List|1.1.0")
+@ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_List")
 @Description("Die Liste führt alle TA7_Sammelrechnung_Bundles auf.")
 public class SammelrechnungList extends ListResource{
 

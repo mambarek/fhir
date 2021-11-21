@@ -13,6 +13,7 @@ import org.hl7.fhir.r4.model.EnumFactory;
  */
 public class ImportKennzeichenEnum {
 
+    public static final String SYSTEM_URL = "https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Import";
     public enum ImportKennzeichen {
         KEIN_IMPORT(0),
         MIT_GESTZL_PREISABSTAND(1),
@@ -49,18 +50,7 @@ public class ImportKennzeichenEnum {
         }
 
         public String getSystem() {
-            switch (this) {
-                case KEIN_IMPORT:
-                    return "https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Import";
-                case MIT_GESTZL_PREISABSTAND:
-                    return "https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Import";
-                case UNTER_GESTZL_PREIS_ABSTAND:
-                    return "https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Import";
-                case KEIN_BEZUGS_ARZNEI_MITTEL:
-                    return "https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Import";
-                default:
-                    return "?";
-            }
+            return SYSTEM_URL;
         }
 
         public String getDefinition() {
@@ -94,6 +84,9 @@ public class ImportKennzeichenEnum {
         }
     }
 
+    /**
+     * Factory (Wrapper) needed by HAPI-Framework
+     */
     public static class ImportKennzeichenEnumFactory implements EnumFactory<ImportKennzeichen> {
 
         @Override

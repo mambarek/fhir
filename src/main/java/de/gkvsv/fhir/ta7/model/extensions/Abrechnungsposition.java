@@ -35,13 +35,15 @@ public class Abrechnungsposition extends BackboneElement {
         return zaehlerAbrechnungsposition;
     }
 
-    public void setZaehlerAbrechnungsposition(
+    public Abrechnungsposition setZaehlerAbrechnungsposition(
         PositiveIntType zaehlerAbrechnungsposition) {
         this.zaehlerAbrechnungsposition = zaehlerAbrechnungsposition;
+        return this;
     }
 
-    public void setZaehlerAbrechnungsposition(int value) {
+    public Abrechnungsposition setZaehlerAbrechnungsposition(int value) {
         getZaehlerAbrechnungsposition().setValue(value);
+        return this;
     }
 
     public ZuAbschlaegeZusatzdaten getZuAbschlaegeZusatzdaten() {
@@ -51,9 +53,10 @@ public class Abrechnungsposition extends BackboneElement {
         return zuAbschlaegeZusatzdaten;
     }
 
-    public void setZuAbschlaegeZusatzdaten(
+    public Abrechnungsposition setZuAbschlaegeZusatzdaten(
         ZuAbschlaegeZusatzdaten zuAbschlaegeZusatzdaten) {
         this.zuAbschlaegeZusatzdaten = zuAbschlaegeZusatzdaten;
+        return this;
     }
 
     @Override
