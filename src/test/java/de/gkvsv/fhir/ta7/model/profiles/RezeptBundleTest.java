@@ -1,13 +1,13 @@
 package de.gkvsv.fhir.ta7.model.profiles;
 // de.optica.erezept.datenlieferung.ta7.
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.IParser;
 import de.gkvsv.fhir.ta7.model.util.TA7Factory;
-import java.util.UUID;
-import org.junit.jupiter.api.BeforeEach;
+import de.gkvsv.fhir.ta7.validation.TA7FhirValidator;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -15,12 +15,15 @@ import org.junit.jupiter.api.Test;
  */
 class RezeptBundleTest {
 
-    FhirContext fhirContext = FhirContext.forR4();
-    IParser parser = fhirContext.newXmlParser();
+    static final FhirContext fhirContext = FhirContext.forR4();
+    static IParser parser;
+    static TA7FhirValidator ta7FhirValidator;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
+        parser = fhirContext.newXmlParser();
         parser.setPrettyPrint(true);
+        ta7FhirValidator = new TA7FhirValidator(fhirContext);
     }
 
     @Test
@@ -36,5 +39,8 @@ class RezeptBundleTest {
 
         final String s = parser.encodeResourceToString(rezeptBundle);
         System.out.println(s);
+
+        final boolean validationResult = ta7FhirValidator.validateResource(rezeptBundle);
+        assertTrue(validationResult);
     }
 }

@@ -10,6 +10,11 @@ import org.hl7.fhir.r4.model.StringType;
 
 /**
  * TA7 Sammelrechnung aus Datei - Bundle
+ * 4 entries
+ * - sammelrechnung_Composition (1..1)
+ * - sammelrechnung_List (1..1)
+ * - rechnung   (1..n)
+ * - rezeptBundle   (1..n)
  * created by mmbarek on 06.11.2021.
  */
 @ResourceDef(profile = "https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_Sammelrechnung_Bundle")
@@ -50,12 +55,22 @@ public class SammelrechungBundle extends Bundle {
         return this;
     }
 
+    /**
+     * Mapping: 1->n
+     * @param ta7Rechnung
+     * @return SammelrechungBundle
+     */
     public SammelrechungBundle addTa7Rechnung(TA7Rechnung ta7Rechnung) {
         addEntry().setResource(ta7Rechnung)
             .setFullUrl(Configuration.URN_URL_PREFIX + ta7Rechnung.getId());
         return this;
     }
 
+    /**
+     * Es existiert nur ein einziges Compostion. Mapping 1->1
+     * @param composition
+     * @return SammelrechungBundle
+     */
     public SammelrechungBundle addSammelrechungComposition(SammelrechnungComposition composition) {
         if(sammelrechungCompositionEntryComponent == null) {
             sammelrechungCompositionEntryComponent = addEntry();
@@ -65,17 +80,27 @@ public class SammelrechungBundle extends Bundle {
         return this;
     }
 
+    /**
+     * Es existiert nur eine rechnungsList. Mapping 1->1
+     * @param list
+     * @return SammelrechungBundle
+     */
     public SammelrechungBundle addSammelrechnungListCompostion(SammelrechnungList list) {
         if(sammelrechnungListEntryComponent == null) {
             sammelrechnungListEntryComponent = addEntry();
         }
-        list.addReference("Bundle/" + getId());
+        list.addReference("Bandle/" + getId());
         sammelrechnungListEntryComponent.setResource(list)
             .setFullUrl(Configuration.URN_URL_PREFIX + list.getId());
 
         return this;
     }
 
+    /**
+     * Mapping 1->n
+     * @param rezeptBundle
+     * @return SammelrechungBundle
+     */
     public SammelrechungBundle addRezeptBundle(RezeptBundle rezeptBundle) {
         addEntry().setResource(rezeptBundle)
             .setFullUrl(Configuration.URN_URL_PREFIX + rezeptBundle.getId());

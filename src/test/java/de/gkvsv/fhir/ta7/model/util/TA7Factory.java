@@ -72,7 +72,7 @@ public class TA7Factory {
         // issuer
         eAbrechnungsdaten.setLeistungserbringerSitz(LeistungserbringerSitz.AUSLAND);
         eAbrechnungsdaten.setLeistungserbringerTyp(Leistungserbringertyp.KRANKENHAUSAPOTHEKEN);
-        eAbrechnungsdaten.setApothekenIK("90456789");
+        eAbrechnungsdaten.setApothekenIK("123456789");
 
         // Lineitem
         InvoiceLineItem lineItem = new InvoiceLineItem();

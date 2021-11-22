@@ -78,11 +78,11 @@ public class ZusatzDatenHerstellung extends BackboneElement {
     public static class Einheit extends BackboneElement {
 
         @Child(name = "zaehlerEinheit")
-        @Extension(url="zaehlerEinheit", definedLocally = false, isModifier = false)
-        private IntegerType zaehlerEinheit;
+        @Extension(url="zaehlerEinheit")
+        private PositiveIntType zaehlerEinheit;
 
         @Child(name = "abrechnungsposition")
-        @Extension(url = "abrechnungspositionen")
+        @Extension(url = "abrechnungsposition")
         private List<Abrechnungsposition> abrechnungspositionen;
 
 
@@ -99,14 +99,14 @@ public class ZusatzDatenHerstellung extends BackboneElement {
             return this;
         }
 
-        public IntegerType getZaehlerEinheit() {
+        public PositiveIntType getZaehlerEinheit() {
             if(zaehlerEinheit == null) {
-                zaehlerEinheit = new IntegerType();
+                zaehlerEinheit = new PositiveIntType();
             }
             return zaehlerEinheit;
         }
 
-        public Einheit setZaehlerEinheit(IntegerType zaehlerEinheit) {
+        public Einheit setZaehlerEinheit(PositiveIntType zaehlerEinheit) {
             this.zaehlerEinheit = zaehlerEinheit;
             return this;
         }

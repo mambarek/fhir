@@ -1,10 +1,13 @@
 package de.gkvsv.fhir.ta7.model.profiles;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import ca.uhn.fhir.parser.IParser;
 import de.gkvsv.fhir.ta7.model.enums.RechnungsartEnum.Rechnungsart;
 import de.gkvsv.fhir.ta7.model.util.TA7Factory;
+import de.gkvsv.fhir.ta7.validation.TA7FhirValidator;
 import java.util.Date;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,18 +18,21 @@ import org.junit.jupiter.api.Test;
  */
 class SammelrechungBundleTest {
 
-    FhirContext fhirContext = FhirContext.forR4();
-    IParser parser = fhirContext.newXmlParser();
+    static final FhirContext fhirContext = FhirContext.forR4();
+    static IParser parser;
+    static TA7FhirValidator ta7FhirValidator;
 
     @BeforeEach
     void setUp() {
+        parser = fhirContext.newXmlParser();
         parser.setPrettyPrint(true);
+        ta7FhirValidator = new TA7FhirValidator(fhirContext);
     }
 
     @Test
     void testCreate() {
         SammelrechungBundle bundle = new SammelrechungBundle();
-        bundle.setDateiname("APO45607")
+        bundle.setDateiname("ARZFHR21001")
             .setDateinummer("00007");
 
         // Db.select();
@@ -91,5 +97,8 @@ class SammelrechungBundleTest {
 
         final String s = parser.encodeResourceToString(bundle);
         System.out.println(s);
+
+        final boolean validationResult = ta7FhirValidator.validateResource(bundle);
+        assertTrue(validationResult);
     }
 }

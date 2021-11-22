@@ -147,7 +147,7 @@ public class TA7FhirValidator {
         });
         log.info("Es wurden {} ERROR gefunden", messageMap.get(true).size());
         messageMap.get(true).forEach(m -> {
-                log.warn(" Next issue " + m.getSeverity() + " - " + m.getLocationString() + " - "
+                log.error(" Next issue " + m.getSeverity() + " - " + m.getLocationString() + " - "
                     + m.getMessage());
             });
 

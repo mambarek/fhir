@@ -7,6 +7,7 @@ import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Extension;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.util.ElementUtil;
+import de.gkvsv.fhir.ta7.config.Configuration;
 import de.gkvsv.fhir.ta7.model.enums.RechnungsartEnum.Rechnungsart;
 import de.gkvsv.fhir.ta7.model.enums.RechnungsartEnum.RechnungsartFactory;
 import java.util.ArrayList;
@@ -175,7 +176,7 @@ public class TA7Rechnung extends Invoice {
 
         public void addRezeptBundleReference(String reference) {
             Reference ref = new Reference();
-            ref.setReference("Bundle/" + reference);
+            ref.setReference(Configuration.URN_URL_PREFIX + reference);
             getLineItems().add(ref);
         }
     }
