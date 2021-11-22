@@ -1,0 +1,213 @@
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="d4e7d617-92c2-4ca5-beab-94619fb20a3d"/>
+  <meta>
+    <profile value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_TA7_RezeptBundle"/>
+  </meta>
+  <type value="collection"/>
+  <entry>
+    <link>
+      <relation value="item"/>
+      <url value="https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle"/>
+    </link>
+    <fullUrl value="urn:uuid:66eb68ef-0f47-4a80-9d54-5e9ac9a7f547"/>
+    <resource>
+      <Binary xmlns="http://hl7.org/fhir">
+        <id value="66eb68ef-0f47-4a80-9d54-5e9ac9a7f547"/>
+        <meta>
+          <profile value="https://gematik.de/fhir/StructureDefinition/ErxBinary"/>
+        </meta>
+        <contentType value="application/pkcs7-mime"/>
+        <data
+          value="VmVyb3JkbnVuZ3NkYXRlbiBCZWlzcGllbCBFcnN0ZWxsdW5nIEJlaXNwaWVsIGVBYnJlY2hudW5nc2RhdGVu"/>
+      </Binary>
+    </resource>
+  </entry>
+  <entry>
+    <link>
+      <relation value="item"/>
+      <url value="https://gematik.de/fhir/StructureDefinition/ErxReceipt"/>
+    </link>
+    <fullUrl value="urn:uuid:e0b3e26c-1f93-4d46-a5c2-aaf20940ca12"/>
+    <resource>
+      <Binary xmlns="http://hl7.org/fhir">
+        <id value="e0b3e26c-1f93-4d46-a5c2-aaf20940ca12"/>
+        <meta>
+          <profile value="https://gematik.de/fhir/StructureDefinition/ErxBinary"/>
+        </meta>
+        <contentType value="application/pkcs7-mime"/>
+        <data
+          value="VmVyb3JkbnVuZ3NkYXRlbiBCZWlzcGllbCBFcnN0ZWxsdW5nIEJlaXNwaWVsIGVBYnJlY2hudW5nc2RhdGVu"/>
+      </Binary>
+    </resource>
+  </entry>
+  <entry>
+    <link>
+      <relation value="item"/>
+      <url
+        value="http://fhir.abda.de/eRezeptAbgabedaten/StructureDefinition/DAV-PR-ERP-AbgabedatenBundle"/>
+    </link>
+    <fullUrl value="urn:uuid:ad0a2bfc-ce1c-440b-b566-4b319b60cdb3"/>
+    <resource>
+      <Binary xmlns="http://hl7.org/fhir">
+        <id value="ad0a2bfc-ce1c-440b-b566-4b319b60cdb3"/>
+        <meta>
+          <profile value="https://gematik.de/fhir/StructureDefinition/ErxBinary"/>
+        </meta>
+        <contentType value="application/pkcs7-mime"/>
+        <data
+          value="ZUFiZ2FiZWRhdGVuIEJlaXNwaWVsIEVyc3RlbGx1bmcgQmVpc3BpZWwgZUFicmVjaG51bmdzZGF0ZW4="/>
+      </Binary>
+    </resource>
+  </entry>
+  <entry>
+    <link>
+      <relation value="item"/>
+      <url value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten"/>
+    </link>
+    <fullUrl value="urn:uuid:844ad3b7-e7de-416e-b2ae-81c8afdd10a9"/>
+    <resource>
+      <Invoice xmlns="http://hl7.org/fhir">
+        <id value="844ad3b7-e7de-416e-b2ae-81c8afdd10a9"/>
+        <meta>
+          <profile
+            value="https://fhir.gkvsv.de/StructureDefinition/GKVSV_PR_ERP_eAbrechnungsdaten"/>
+        </meta>
+        <extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Irrlaeufer">
+          <valueBoolean value="true"/>
+        </extension>
+        <extension url="http://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_ZusatzdatenHerstellung">
+          <extension url="zaehlerHerstellung">
+            <valuePositiveInt value="1"/>
+          </extension>
+          <extension url="einheit">
+            <extension url="zaehlerEinheit">
+              <valueInteger value="1"/>
+            </extension>
+            <extension url="abrechnungspositionen">
+              <extension url="zaehlerAbrechnungsposition">
+                <valuePositiveInt value="1"/>
+              </extension>
+              <extension url="zuAbschlaegeZusatzdaten">
+                <extension url="zuAbschlagCode">
+                  <valueCodeableConcept>
+                    <coding>
+                      <system value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_ZuAbschlagKey"/>
+                      <code value="R001"/>
+                    </coding>
+                  </valueCodeableConcept>
+                </extension>
+                <extension url="zuAbschlagKennzeichen">
+                  <valueCode value="deduction"/>
+                </extension>
+                <extension url="zuAbschlagBetrag">
+                  <valueMoney>
+                    <value value="100.59"/>
+                    <currency value="EUR"/>
+                  </valueMoney>
+                </extension>
+              </extension>
+            </extension>
+            <extension url="abrechnungspositionen">
+              <extension url="zaehlerAbrechnungsposition">
+                <valuePositiveInt value="2"/>
+              </extension>
+              <extension url="zuAbschlaegeZusatzdaten">
+                <extension url="zuAbschlagCode">
+                  <valueCodeableConcept>
+                    <coding>
+                      <system value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_ZuAbschlagKey"/>
+                      <code value="R004"/>
+                    </coding>
+                  </valueCodeableConcept>
+                </extension>
+                <extension url="zuAbschlagKennzeichen">
+                  <valueCode value="surcharge"/>
+                </extension>
+                <extension url="zuAbschlagBetrag">
+                  <valueMoney>
+                    <value value="-3102.57"/>
+                    <currency value="EUR"/>
+                  </valueMoney>
+                </extension>
+              </extension>
+            </extension>
+          </extension>
+        </extension>
+        <identifier>
+          <system value="https://gematik.de/fhir/NamingSystem/PrescriptionID"/>
+          <value value="160.100.000.000.021.76"/>
+        </identifier>
+        <identifier>
+          <system value="https://fhir.gkvsv.de/NamingSystem/GKVSV_NS_Belegnummer"/>
+          <value value="2105000000713456789"/>
+        </identifier>
+        <status value="issued"/>
+        <issuer>
+          <extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_LE_Sitz">
+            <valueCoding>
+              <system
+                value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Leistungserbringer_Sitz"/>
+              <code value="2"/>
+            </valueCoding>
+          </extension>
+          <identifier>
+            <type>
+              <coding>
+                <system
+                  value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Leistungserbringertyp"/>
+                <code value="K"/>
+              </coding>
+            </type>
+            <system value="http://fhir.de/NamingSystem/arge-ik/iknr"/>
+            <value value="90456789"/>
+          </identifier>
+        </issuer>
+        <lineItem>
+          <extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Positionstyp">
+            <valueCodeableConcept>
+              <coding>
+                <system value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Positionstyp"/>
+                <code value="1"/>
+                <display value="übrige Position"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_Import">
+            <valueCodeableConcept>
+              <coding>
+                <system value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_Import"/>
+                <code value="3"/>
+              </coding>
+            </valueCodeableConcept>
+          </extension>
+          <extension url="https://fhir.gkvsv.de/StructureDefinition/GKVSV_EX_ERP_VAT_VALUE">
+            <valueMoney>
+              <value value="56.89"/>
+              <currency value="EUR"/>
+            </valueMoney>
+          </extension>
+          <sequence value="1"/>
+          <chargeItemCodeableConcept>
+            <coding>
+              <system value="http://terminology.hl7.org/CodeSystem/v3-NullFlavor"/>
+              <code value="UNC"/>
+            </coding>
+          </chargeItemCodeableConcept>
+          <priceComponent>
+            <type value="surcharge"/>
+            <code>
+              <coding>
+                <system value="https://fhir.gkvsv.de/CodeSystem/GKVSV_CS_ERP_ZuAbschlagKey"/>
+                <code value="R004"/>
+              </coding>
+            </code>
+            <amount>
+              <value value="-1.77"/>
+              <currency value="EUR"/>
+            </amount>
+          </priceComponent>
+        </lineItem>
+      </Invoice>
+    </resource>
+  </entry>
+</Bundle>
